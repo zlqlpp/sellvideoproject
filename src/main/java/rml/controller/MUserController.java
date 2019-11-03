@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MUserController {
 
 	
-	@RequestMapping(value="/listUser")
+	@RequestMapping(value="/index.do")
 	public String listUser(HttpServletRequest request) {
 		
-		return "listUser";
+		return "index";
 	}
 	
 }
