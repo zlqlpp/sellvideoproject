@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MUserController {
 
 	
-	@RequestMapping(value="/index.do")
+	@RequestMapping(value="/index")
 	public String listUser(HttpServletRequest request) {
 		
 		return "index";
