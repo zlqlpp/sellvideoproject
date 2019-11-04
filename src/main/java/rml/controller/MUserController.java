@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,9 +32,9 @@ public class MUserController {
 	}
 	
 	@RequestMapping(value="/listvideos")
-	public String listvideos(HttpServletRequest request,HttpSession session) {
+	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		
-	/*	String code = request.getParameter("ucode");
+		String code = request.getParameter("ucode");
 		
 		//校验输入格式，校验code是否存在
 		String codes  = (String) session.getAttribute("codes");
@@ -55,7 +56,6 @@ public class MUserController {
 		System.out.println("-------");
 		model.addAttribute("videolist", videolist);
 		
-		return "listvideos";*/
 		return "listvideos";
 	}
 	
