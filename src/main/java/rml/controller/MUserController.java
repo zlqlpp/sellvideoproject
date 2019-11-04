@@ -52,7 +52,7 @@ public class MUserController {
 			videolist = getVideoList(session);
 		}
 		//返回前台
-		
+		System.out.println("-------");
 		model.addAttribute("videolist", videolist);
 		
 		return "listvideos";
