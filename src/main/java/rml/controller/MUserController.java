@@ -31,7 +31,7 @@ public class MUserController {
 	}
 	
 	@RequestMapping(value="/listvideos")
-	public String listvideos(HttpServletRequest request,HttpSession session) {
+	public String listvideos(ModelMap model,HttpServletRequest request,HttpSession session) {
 		
 		String code = request.getParameter("code");
 		
@@ -49,11 +49,11 @@ public class MUserController {
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
-			videolist = getVideoList(session);
+			//videolist = getVideoList(session);
 		}
 		//返回前台
 		System.out.println("-------");
-		//model.addAttribute("videolist", videolist);
+		model.addAttribute("videolist", videolist);
 		
 		return "listvideos";
 	}
