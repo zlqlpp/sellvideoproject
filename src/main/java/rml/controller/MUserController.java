@@ -49,7 +49,7 @@ public class MUserController {
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
-			getVideoList(session);
+			videolist = getVideoList(session);
 		}
 		//返回前台
 		
@@ -80,7 +80,7 @@ public class MUserController {
 	
 	//---------------------------------------工具方法-------------------------
 
-    private void getVideoList(HttpSession session){
+    private List getVideoList(HttpSession session){
     	 
     	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
         System.out.println(path3);
@@ -107,6 +107,7 @@ public class MUserController {
         }
         session.setAttribute("videolist", videolist);
         
+        return videolist;
     }
     
     private String getCodes(HttpSession session){
