@@ -48,6 +48,9 @@ public class MUserController {
 		
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
+		if(null==videolist){
+			getVideoList(session);
+		}
 		//返回前台
 		
 		model.addAttribute("videolist", videolist);
