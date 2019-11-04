@@ -56,7 +56,7 @@ public class MUserController {
 		model.addAttribute("videolist", videolist);
 		
 		return "listvideos";*/
-		return "openvideo";
+		return "listvideos";
 	}
 	
 	@RequestMapping(value="/openvideo")
