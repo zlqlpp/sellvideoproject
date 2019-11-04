@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,8 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    Spring core + Spring MVC + MyBatis <br>
+    	欢迎 <br>
+    	<hr>
     
-    <a href="<%=path %>/muserController/listUser.do">User List</a>
+    <form action="/muserController/listvideos.do">
+    	<input type="text" />
+    	<input type="button" value="提交"/>
+    </form>
   </body>
 </html>
