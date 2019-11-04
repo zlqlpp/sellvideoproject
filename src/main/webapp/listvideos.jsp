@@ -26,11 +26,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<c:forEach items="${videolist}" var="user">
    		<tr>
    			<td>${user}</td>
-   			<td>${user.name }</td>
    			<td>${user }</td>
    			<td>${user }</td>
-   			<td><a href="<%=path %>/muserController/deleteUser.do?id=${user.id }">Delete</a></td>
-   			<td><a href="<%=path %>/muserController/updateUserUI.do?id=${user.id }">Update</a></td>
+   			<td>${user }</td>
+   			<td><a href="<%=path %>/muserController/deleteUser.do?id=${user }">Delete</a></td>
+   			<td><a href="<%=path %>/muserController/updateUserUI.do?id=${user}">Update</a></td>
    		</tr>
    		</c:forEach>
    </table>
