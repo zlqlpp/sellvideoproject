@@ -97,9 +97,9 @@ public class MUserController {
         
     	File file = new File(videoPath);
         File[] fileNamesArray = file.listFiles();
-        if(null == fileNamesArray){return;}
-        List<String> videolist = new ArrayList<String>();
         
+        List<String> videolist = new ArrayList<String>();
+        if(null == fileNamesArray){return videolist;}
         for (int i = 0; i < fileNamesArray.length; i++) {
             if (fileNamesArray[i].isFile() ) {
             	videolist.add( fileNamesArray[i].getName() );
