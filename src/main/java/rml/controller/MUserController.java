@@ -31,7 +31,7 @@ public class MUserController {
 	}
 	
 	@RequestMapping(value="/listvideos")
-	public String listvideos(ModelMap model,HttpServletRequest request,HttpSession session) {
+	public String listvideos(HttpServletRequest request,HttpSession session) {
 		
 	/*	String code = request.getParameter("ucode");
 		
