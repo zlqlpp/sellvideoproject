@@ -33,7 +33,7 @@ public class MUserController {
 	@RequestMapping(value="/listvideos")
 	public String listvideos(ModelMap model,HttpServletRequest request,HttpSession session) {
 		
-		String code = request.getParameter("ucode");
+	/*	String code = request.getParameter("ucode");
 		
 		//校验输入格式，校验code是否存在
 		String codes  = (String) session.getAttribute("codes");
@@ -55,7 +55,8 @@ public class MUserController {
 		System.out.println("-------");
 		model.addAttribute("videolist", videolist);
 		
-		return "listvideos";
+		return "listvideos";*/
+		return "openvideo";
 	}
 	
 	@RequestMapping(value="/openvideo")
