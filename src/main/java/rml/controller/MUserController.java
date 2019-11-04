@@ -37,6 +37,9 @@ public class MUserController {
 		
 		//校验输入格式，校验code是否存在
 		String codes  = (String) session.getAttribute("codes");
+		if(null==codes||"".equals(codes)){
+			codes = getCodes(session);
+		}
 		if(null==code||"".equals(code)||!codes.contains(code)){
 			return "index";
 		}
@@ -103,7 +106,7 @@ public class MUserController {
         
     }
     
-    private void getCodes(HttpSession session){
+    private String getCodes(HttpSession session){
    	 
     	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
         System.out.println(path3);
@@ -119,6 +122,7 @@ public class MUserController {
         String codes = prop.getProperty("codes");
         
         session.setAttribute("codes", codes);
+        return codes;
         
     }
 }

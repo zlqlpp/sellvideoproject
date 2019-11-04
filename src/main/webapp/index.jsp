@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	欢迎 <br>
     	<hr>
     
-    <form action="/muserController/listvideos.do">
+    <form action="/muserController/listvideos.do" method="post">
     	<input type="text" name="code"/>
     	<input type="button" value="提交"/>
     </form>
