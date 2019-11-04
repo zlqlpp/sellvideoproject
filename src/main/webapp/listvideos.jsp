@@ -23,12 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<td>Delete</td>
    			<td>Update</td>
    		</tr>
-   		<c:forEach items="${userlist}" var="user">
+   		<c:forEach items="${videolist}" var="user">
    		<tr>
-   			<td>${user.id }</td>
+   			<td>${user}</td>
    			<td>${user.name }</td>
-   			<td>${user.age }</td>
-   			<td>${user.address }</td>
+   			<td>${user }</td>
+   			<td>${user }</td>
    			<td><a href="<%=path %>/muserController/deleteUser.do?id=${user.id }">Delete</a></td>
    			<td><a href="<%=path %>/muserController/updateUserUI.do?id=${user.id }">Update</a></td>
    		</tr>
