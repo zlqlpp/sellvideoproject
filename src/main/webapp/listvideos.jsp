@@ -9,16 +9,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>User list</title>
+<title>videoList</title>
+<script type="text/javascript">
+function go(v){
+	alert(v);
+	 
+}
+</script>
 </head>
 <body>
   	<h3>列表</h3>
+  	 <form action="/muserController/openvideo.do" method="post" >
+  	 	<input id="video" name="video" />
+  	 </form>
+  	 
   	 
 	<table border="1" width="70%">
  
    		<c:forEach items="${videolist}" var="v">
    		<tr>
-   			<td height="40px">${v }</td>
+   			<td height="40px" value="${v }" onclick="go(this)">${v }</a></td>
  
    		</tr>
    		</c:forEach>
