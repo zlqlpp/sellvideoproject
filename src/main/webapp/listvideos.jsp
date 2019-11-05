@@ -12,14 +12,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>videoList</title>
 <script type="text/javascript">
 function go(v){
-	alert(v);
+	document.getelementbyid('video').value=v;
+	var form = document.getElementById('f');
+	 
+	form.submit();
 	 
 }
 </script>
 </head>
 <body>
   	<h3>列表</h3>
-  	 <form action="/muserController/openvideo.do" method="post" >
+  	 <form action="/muserController/openvideo.do" method="post"  id="f">
   	 	<input type="hidden" id="video" name="video" />
   	 </form>
   	 
