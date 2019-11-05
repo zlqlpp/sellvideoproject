@@ -13,6 +13,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,10 +51,11 @@ public class MUserController {
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
-			//videolist = getVideoList(session);
+			videolist = getVideoList(session);
 		}
 		//返回前台
 		System.out.println("-------");
+		Logger.getLogger(MUserController.class).info("-----------------------");
 		model.addAttribute("videolist", videolist);
 		
 		return "listvideos";
