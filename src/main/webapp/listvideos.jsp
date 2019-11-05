@@ -11,8 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>videoList</title>
 <script type="text/javascript">
-function go(){
-	alert(this.value);
+function go(v){
+	alert(v);
 	 
 }
 </script>
@@ -28,7 +28,7 @@ function go(){
  
    		<c:forEach items="${videolist}" var="v">
    		<tr>
-   			<td height="40px" value="${v }" onclick="go(this)">${v }</a></td>
+   			<td height="40px" value="${v }" onclick="go(this.value)">${v }</a></td>
  
    		</tr>
    		</c:forEach>
