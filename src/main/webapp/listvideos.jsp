@@ -11,8 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>videoList</title>
 <script type="text/javascript">
-function go(v){
-	alert(v.value);
+function go(){
+	alert(this.value);
 	 
 }
 </script>
