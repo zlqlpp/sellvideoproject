@@ -60,9 +60,9 @@ public class MUserController {
 	}
 	
 	@RequestMapping(value="/openvideo")
-	public String openvideo(HttpServletRequest request,HttpSession session) {
+	public String openvideo(Model model,HttpServletRequest request,HttpSession session) {
 		
-		String videoname = request.getParameter("videoname");
+		String videoname = request.getParameter("video");
 		if(null==videoname||"".equals(videoname)){
 			return "index";
 		}
@@ -73,7 +73,7 @@ public class MUserController {
 		//code使用量-1，放入session
 		
 		//跳到播放页
-		
+		 model.addAttribute("video", videoname);
 		
 		
 		return "openvideo";
