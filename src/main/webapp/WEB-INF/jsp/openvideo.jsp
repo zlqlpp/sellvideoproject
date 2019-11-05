@@ -26,7 +26,7 @@
 	</script>
 </head>
 <body>
- <iframe src='/${video }' frameborder='0' width='600px' height='400px' allowfullscreen='true'></iframe>
+ <iframe src='/zhibing_mybatis/video/${video }' frameborder='0' width='600px' height='400px' allowfullscreen='true'></iframe>
 
 </body>
 </html>
