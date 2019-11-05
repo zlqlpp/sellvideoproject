@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>videoList</title>
 <script type="text/javascript">
 function go(v){
-	alert(v);
+	alert(v.value);
 	 
 }
 </script>
@@ -20,7 +20,7 @@ function go(v){
 <body>
   	<h3>列表</h3>
   	 <form action="/muserController/openvideo.do" method="post" >
-  	 	<input id="video" name="video" />
+  	 	<input type="hidden" id="video" name="video" />
   	 </form>
   	 
   	 
