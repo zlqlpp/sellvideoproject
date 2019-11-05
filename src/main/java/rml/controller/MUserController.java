@@ -76,7 +76,7 @@ public class MUserController {
 		
 		
 		
-		return "listvideos";
+		return "openvideo";
 	}
 	
 	//---------------------------------------工具方法-------------------------

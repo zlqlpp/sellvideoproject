@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>videoList</title>
 <script type="text/javascript">
 function go(v){
-	document.getelementbyid('video').value=v;
+	document.getElementById('video').value=v;
 	var form = document.getElementById('f');
 	 
 	form.submit();
