@@ -54,8 +54,8 @@ public class MUserController {
 			videolist = getVideoList(session);
 		}
 		//返回前台
-		System.out.println("-------");
-		Logger.getLogger(MUserController.class).info("-----------------------");
+		System.out.println("--systemout-----");
+		Logger.getLogger(MUserController.class).info("----------log4j-------------");
 		model.addAttribute("videolist", videolist);
 		
 		return "listvideos";
