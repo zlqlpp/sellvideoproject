@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
    		<c:forEach items="${videolist}" var="v">
    		<tr>
-   			<td heigh="20px">${v }</td>
+   			<td height="20px">${v }</td>
  
    		</tr>
    		</c:forEach>
