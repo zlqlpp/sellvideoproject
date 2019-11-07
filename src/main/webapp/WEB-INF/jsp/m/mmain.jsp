@@ -61,7 +61,7 @@ function go(v){
     </style>
 <body>
 <div>
-    <iframe id="iframeTop" name="iframeTop" frameborder="0" src="view/top.html"></iframe>
+    <iframe id="iframeTop" name="iframeTop" frameborder="0" src="m/dwnvideo.jsp"></iframe>
     <iframe id="iframeLeft" name="iframeLeft" frameborder="0" src="view/left.html"></iframe>
     <iframe id="iframeContent" name="iframeContent" frameborder="0" src="view/content.html"></iframe>
 </div>
