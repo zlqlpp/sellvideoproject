@@ -37,7 +37,23 @@ public class ManageController {
 		
 		String code = request.getParameter("passwd");
 		
- 
+		return "m/mmain";
+	}
+	
+	@RequestMapping(value="/mgotopage")
+	public String mgotopage(Model model,HttpServletRequest request,HttpSession session) {
+		
+		String page = request.getParameter("page");
+		
+		if("dwnvideo".equals(page)){
+			return "m/dwnvideo";
+		}else if("crtpasswd".equals(page)){
+			return "m/crtpasswd";
+		}else if("crtgg".equals(page)){
+			return "m/crtgg";
+		} else if("clsvideo".equals(page)){
+			return "m/clsvideo";
+		} 
 		
 		return "m/mmain";
 	}

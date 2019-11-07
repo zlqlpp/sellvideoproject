@@ -22,13 +22,14 @@ function go(v){
 </head>
 <body>
   	<h3>列表</h3>
-  	 <form action="/c/openvideo.do" method="post"  id="f">
+<!--   	 <form action="/c/openvideo.do" method="post"  id="f">
   	 	<input type="hidden" id="video" name="video" />
-  	 </form>
+  	 </form> -->
   	 
-  	 <a href="#">下载视频</a>
-  	 <a href="#">生成密码</a>
-  	 <a href="#">生成宣传页</a>
+  	 <a href="/m/dwnvideo.do">下载视频</a>
+  	 <a href="/m/crtpasswd.do">生成密码</a>
+  	 <a href="/m/crtgg.do">生成宣传页</a>
+  	 <a href="/m/clsvideo.do">清空视频</a>
 	<table border="1" width="70%">
  
    		<c:forEach items="${videolist}" var="v">
