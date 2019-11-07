@@ -26,7 +26,9 @@ function go(v){
   	 	<input type="hidden" id="video" name="video" />
   	 </form>
   	 
-  	 
+  	 <a href="#">下载视频</a>
+  	 <a href="#">生成密码</a>
+  	 <a href="#">生成宣传页</a>
 	<table border="1" width="70%">
  
    		<c:forEach items="${videolist}" var="v">
