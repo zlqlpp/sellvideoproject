@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/muserController")
+@RequestMapping("/c")
 public class MUserController {
 
 	

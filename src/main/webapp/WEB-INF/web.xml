@@ -42,6 +42,6 @@
 	</servlet-mapping>
 	
     <welcome-file-list>
-    	<welcome-file>muserController/index.do</welcome-file>
+    	<welcome-file>c/index.do</welcome-file>
   	</welcome-file-list>
 </web-app>
