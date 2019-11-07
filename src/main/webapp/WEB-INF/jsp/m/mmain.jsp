@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE html >
 <html>
-<head>
+<%-- <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>videoList</title>
 <script type="text/javascript">
@@ -22,9 +22,7 @@ function go(v){
 </head>
 <body>
   	<h3>列表</h3>
-<!--   	 <form action="/c/openvideo.do" method="post"  id="f">
-  	 	<input type="hidden" id="video" name="video" />
-  	 </form> -->
+ 
   	 
   	 <a href="/m/mgotopage.do?page=dwnvideo">下载视频</a>
   	 <a href="/m/mgotopage.do?page=crtpasswd">生成密码</a>
@@ -41,4 +39,33 @@ function go(v){
    </table>
    
 </body>
+</html> --%>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+        #iframeTop{
+            width: 100%;
+            height: 70px;
+        }
+        #iframeLeft{
+            width: 15%;
+            height: 700px;
+            float: left;
+        }
+        #iframeContent{
+            width: 84%;
+            height: 700px;
+        }
+    </style>
+<body>
+<div>
+    <iframe id="iframeTop" name="iframeTop" frameborder="0" src="view/top.html"></iframe>
+    <iframe id="iframeLeft" name="iframeLeft" frameborder="0" src="view/left.html"></iframe>
+    <iframe id="iframeContent" name="iframeContent" frameborder="0" src="view/content.html"></iframe>
+</div>
+</body>
 </html>
+
+ 
