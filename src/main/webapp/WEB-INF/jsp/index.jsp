@@ -20,7 +20,7 @@
     	欢迎 <br>
     	<hr>
     
-    <form action="/muserController/listvideos.do" method="post" >
+    <form action="/c/listvideos.do" method="post" >
     	<input type="text" name="ucode" id="ucode"/>
     	<input type="submit" value="提交"/>
     </form>

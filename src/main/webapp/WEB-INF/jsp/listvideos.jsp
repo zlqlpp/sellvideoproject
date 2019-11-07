@@ -22,7 +22,7 @@ function go(v){
 </head>
 <body>
   	<h3>列表</h3>
-  	 <form action="/muserController/openvideo.do" method="post"  id="f">
+  	 <form action="/c/openvideo.do" method="post"  id="f">
   	 	<input type="hidden" id="video" name="video" />
   	 </form>
   	 
