@@ -26,10 +26,10 @@ function go(v){
   	 	<input type="hidden" id="video" name="video" />
   	 </form> -->
   	 
-  	 <a href="/m/dwnvideo.do">下载视频</a>
-  	 <a href="/m/crtpasswd.do">生成密码</a>
-  	 <a href="/m/crtgg.do">生成宣传页</a>
-  	 <a href="/m/clsvideo.do">清空视频</a>
+  	 <a href="/m/mgotopage.do?page=dwnvideo">下载视频</a>
+  	 <a href="/m/mgotopage.do?page=crtpasswd">生成密码</a>
+  	 <a href="/m/mgotopage.do?page=crtgg">生成宣传页</a>
+  	 <a href="/m/mgotopage.do?page=clsvideo">清空视频</a>
 	<table border="1" width="70%">
  
    		<c:forEach items="${videolist}" var="v">
