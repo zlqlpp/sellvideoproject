@@ -27,6 +27,8 @@
 </head>
 <body>
  <iframe src='/zhibing_mybatis/video/${video }?rel=0' frameborder='0' width='600px' height='400px' allowfullscreen='true'  ></iframe>
-
+<br>
+<hr>
+<a href=”#” onClick=”javascript :history.go(-1);”>返回上一页</a>
 </body>
 </html>
