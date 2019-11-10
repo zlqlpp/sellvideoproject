@@ -1,9 +1,12 @@
 package rml.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -104,6 +107,21 @@ public class ManageController {
 		return "m/mmain";  
 	}
 	
+	@RequestMapping(value="/crtpasswd")
+	public String crtpasswd(Model model,HttpServletRequest request,HttpSession session) {
+		
+		String passwd = writeCodes(session);
+		model.addAttribute("passwd",passwd);
+		return "m/crtpasswd";  
+	}
+	
+	@RequestMapping(value="/lispasswd")
+	public String lispasswd(HttpServletRequest request,HttpSession session) {
+		
+		readCodes(session);
+		return "m/crtpasswd";  
+	}
+	
 	//---------------------------------------工具方法-------------------------
 
     private List getVideoList(HttpSession session){
@@ -130,17 +148,64 @@ public class ManageController {
         return videolist;
     }
     
-    private String getCodes(HttpSession session){
+    private String readCodes(HttpSession session){
       	 
-		Properties prop = (Properties) session.getAttribute("prop");
+    	Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
 			prop = getProp(session);
 		}
+        List passwdlist = new ArrayList();
+        String codeString= "";
         
-        session.setAttribute("codes", prop.getProperty("codes"));
-        
-        return prop.getProperty("codes");
-        
+    	File file = new File(prop.getProperty("passwdPath"));
+    	if(file == null) {
+    		return null;
+    	}
+        BufferedReader reader = null;
+        try {
+             
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            int line = 1;
+            // 一次读入一行，直到读入null为文件结束
+            while ((tempString = reader.readLine()) != null) {
+                // 显示行号
+                //System.out.println("line " + line + ": " + tempString);
+                passwdlist.add(tempString);
+                codeString+=tempString;
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+        session.setAttribute("passwdlist", passwdlist);
+        return codeString;
+    }
+    private String writeCodes(HttpSession session){
+     	 Long passwd = new Date().getTime();
+     	Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
+		}
+		
+    	 try {
+         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
+         	Process pro = Runtime.getRuntime().exec("echo '"+passwd.toString()+"' >>"+ prop.getProperty("passPath")) ;
+         	pro.waitFor();
+         } catch ( Exception e) {
+             e.printStackTrace();
+         }
+      
+         
+        return passwd.toString();
     }
     
     private Properties getProp(HttpSession session){
@@ -163,7 +228,7 @@ public class ManageController {
 }
 
 
-
+//--------------------------------------------------
 class MusicImplements implements Runnable{  
 	private String durl = "";
 	private Properties p;
@@ -175,7 +240,7 @@ class MusicImplements implements Runnable{
     public void run() {  
         try {
         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
-        	Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(title)s.%(ext)s "+durl);
+        	Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"%(title)s.%(ext)s "+durl);
         	pro.waitFor();
         } catch ( Exception e) {
             e.printStackTrace();

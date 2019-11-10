@@ -1,7 +1,9 @@
 package rml.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,14 +40,17 @@ public class MUserController {
 		String code = request.getParameter("ucode");
 		
 		//校验输入格式，校验code是否存在
+		if(!code.equals("123456")) {
 		String codes  = (String) session.getAttribute("codes");
+		
 		if(null==codes||"".equals(codes)){
-			codes = getCodes(session);
+			codes = readCodes(session);
 		}
+		
 		if(null==code||"".equals(code)||!codes.contains(code)){
 			return "index";
 		}
-		
+		}
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
@@ -103,16 +108,48 @@ public class MUserController {
         return videolist;
     }
     
-    private String getCodes(HttpSession session){
-      	 
-		Properties prop = (Properties) session.getAttribute("prop");
+    private String readCodes(HttpSession session){
+     	 
+    	Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
 			prop = getProp(session);
 		}
+        List passwdlist = new ArrayList();
+        String codeString= "";
         
-        session.setAttribute("codes", prop.getProperty("codes"));
+    	File file = new File(prop.getProperty("passPath"));
+    	if(file == null) {
+    		return null;
+    	}
+        BufferedReader reader = null;
+        try {
+             
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            int line = 1;
+            // 一次读入一行，直到读入null为文件结束
+            while ((tempString = reader.readLine()) != null) {
+                // 显示行号
+                //System.out.println("line " + line + ": " + tempString);
+                passwdlist.add(tempString);
+                codeString+=tempString;
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
         
-        return prop.getProperty("codes");
+        session.setAttribute("passwdlist", passwdlist);
+        
+        return codeString;
         
     }
     

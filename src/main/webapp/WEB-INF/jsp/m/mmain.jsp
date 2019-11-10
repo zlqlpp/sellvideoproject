@@ -29,6 +29,10 @@ function go(v){
   	 <a href="/m/mgotopage.do?page=crtpasswd">生成密码</a>
   	 <a href="/m/mgotopage.do?page=crtgg">生成宣传页</a>
   	 <a href="/m/mgotopage.do?page=clsvideo">清空视频</a>
+  	 
+  	 <hr/>
+  	 
+  	 
 	<table border="1" width="70%">
  
    		<c:forEach items="${videolist}" var="v">
