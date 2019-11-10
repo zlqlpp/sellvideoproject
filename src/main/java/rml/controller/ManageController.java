@@ -198,7 +198,7 @@ public class ManageController {
 		if(prop==null) {
 			prop = getProp(session);
 		}
-		logger.info("将新观看码写入文件："+"echo '"+passwd.toString()+"' >>"+ prop.getProperty("passPath"));
+		Logger.getLogger(ManageController.class).info("将新观看码写入文件："+"echo '"+passwd.toString()+"' >>"+ prop.getProperty("passPath"));
     	 try {
          	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
          	Process pro = Runtime.getRuntime().exec("echo '"+passwd.toString()+"' >>"+ prop.getProperty("passPath")) ;
