@@ -80,6 +80,14 @@ public class ManageController {
 		return retMap;
 	}
 	
+	@RequestMapping(value="/regetvideolist")
+	public String regetvideolist(HttpServletRequest request,HttpSession session) {
+		
+		getVideoList( session);
+		
+		return "m/mmain";  
+	}
+	
 	@RequestMapping(value="/clean")
 	public String clean(HttpServletRequest request,HttpSession session) {
 		
@@ -93,29 +101,20 @@ public class ManageController {
 		for(int i=0;i<files.length;i++){
 			files[i].delete();
 		}
-		return "mmain";  
+		return "m/mmain";  
 	}
 	
 	//---------------------------------------工具方法-------------------------
 
     private List getVideoList(HttpSession session){
     	 
-    	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
-        System.out.println(path3);
-        //logger.info(path3);
-        Properties prop = new Properties();
-        //读取资源文件
-        try {
-			prop.load(new FileInputStream(path3));
-		} catch (IOException e) {
-			e.printStackTrace();
+    	Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
 		}
         
-        session.setAttribute("prop", prop);
         
-        String videoPath = prop.getProperty("videoPath");
-        
-    	File file = new File(videoPath);
+    	File file = new File(prop.getProperty("videoPath"));
         File[] fileNamesArray = file.listFiles();
         
         List<String> videolist = new ArrayList<String>();
@@ -125,6 +124,7 @@ public class ManageController {
             	videolist.add( fileNamesArray[i].getName() );
             }
         }
+        
         session.setAttribute("videolist", videolist);
         
         return videolist;
@@ -132,28 +132,20 @@ public class ManageController {
     
     private String getCodes(HttpSession session){
       	 
-    	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
-        System.out.println(path3);
-        //logger.info(path3);
-        Properties prop = new Properties();
-        //读取资源文件
-        try {
-			prop.load(new FileInputStream(path3));
-		} catch (IOException e) {
-			e.printStackTrace();
+		Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
 		}
         
-        String codes = prop.getProperty("codes");
+        session.setAttribute("codes", prop.getProperty("codes"));
         
-        session.setAttribute("codes", codes);
-        return codes;
+        return prop.getProperty("codes");
         
     }
     
     private Properties getProp(HttpSession session){
       	 
     	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
-        System.out.println("getProp:"+path3);
  
         Properties prop = new Properties();
  
@@ -162,9 +154,9 @@ public class ManageController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
- 
         
         session.setAttribute("prop", prop);
+        
         return prop;
         
     }

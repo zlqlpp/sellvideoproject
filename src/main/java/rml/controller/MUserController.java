@@ -52,7 +52,6 @@ public class MUserController {
 			videolist = getVideoList(session);
 		}
 		//返回前台
-		System.out.println("--systemout-----");
 		Logger.getLogger(MUserController.class).info("----------log4j-------------");
 		model.addAttribute("videolist", videolist);
 		
@@ -80,25 +79,15 @@ public class MUserController {
 	}
 	
 	//---------------------------------------工具方法-------------------------
-
     private List getVideoList(HttpSession session){
     	 
-    	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
-        System.out.println(path3);
-        //logger.info(path3);
-        Properties prop = new Properties();
-        //读取资源文件
-        try {
-			prop.load(new FileInputStream(path3));
-		} catch (IOException e) {
-			e.printStackTrace();
+    	Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
 		}
         
-        session.setAttribute("prop", prop);
         
-        String videoPath = prop.getProperty("videoPath");
-        
-    	File file = new File(videoPath);
+    	File file = new File(prop.getProperty("videoPath"));
         File[] fileNamesArray = file.listFiles();
         
         List<String> videolist = new ArrayList<String>();
@@ -108,28 +97,40 @@ public class MUserController {
             	videolist.add( fileNamesArray[i].getName() );
             }
         }
+        
         session.setAttribute("videolist", videolist);
         
         return videolist;
     }
     
     private String getCodes(HttpSession session){
-   	 
+      	 
+		Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
+		}
+        
+        session.setAttribute("codes", prop.getProperty("codes"));
+        
+        return prop.getProperty("codes");
+        
+    }
+    
+    private Properties getProp(HttpSession session){
+      	 
     	String path3 = Thread.currentThread().getContextClassLoader().getResource("").getPath()+"config.properties"; 
-        System.out.println(path3);
-        //logger.info(path3);
+ 
         Properties prop = new Properties();
-        //读取资源文件
+ 
         try {
 			prop.load(new FileInputStream(path3));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
         
-        String codes = prop.getProperty("codes");
+        session.setAttribute("prop", prop);
         
-        session.setAttribute("codes", codes);
-        return codes;
+        return prop;
         
     }
 }
