@@ -17,10 +17,10 @@
 
 
 <script>
- var npd = "${t}";
+ var npd = "${passwd}";
 window.onload=function(){
  if(npd!=''){
-	 alert('crtggis :'+npd);
+	 alert('新生成的观看码是:'+npd);
  }
 	   
 }
