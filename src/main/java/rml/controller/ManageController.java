@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/m")
 public class ManageController {
 
-	Log logger = LogFactory.getLog(getClass());
+	
 	
 	@RequestMapping(value="/mlogin")
 	public String listUser(HttpServletRequest request) {
@@ -71,8 +71,7 @@ public class ManageController {
 	public Map<String,Object> down(HttpServletRequest request,HttpSession session) {
 		Map<String,Object> retMap = new HashMap<String,Object>();
 		String url = request.getParameter("url");
-		logger.info("新下载视频的URL："+url);
- 
+		Logger.getLogger(ManageController.class).info("新下载视频的URL："+url);
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
 			prop = getProp(session);
@@ -86,7 +85,7 @@ public class ManageController {
 	@RequestMapping(value="/regetvideolist")
 	public String regetvideolist(HttpServletRequest request,HttpSession session) {
 		
-		logger.info("刷新视频列表");
+		Logger.getLogger(ManageController.class).info("刷新视频列表");
 		getVideoList( session);
 		
 		return "m/mmain";  
@@ -94,7 +93,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/clean")
 	public String clean(HttpServletRequest request,HttpSession session) {
-		logger.info("清空视频列表");
+		Logger.getLogger(ManageController.class).info("清空视频列表");
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
 			prop = getProp(session);
@@ -110,7 +109,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/crtpasswd")
 	public String crtpasswd(Model model,HttpServletRequest request,HttpSession session) {
-		logger.info("创建观看码");
+		Logger.getLogger(ManageController.class).info("创建观看码");
 		String passwd = writeCodes(session);
 		model.addAttribute("passwd",passwd);
 		return "m/crtpasswd";  
@@ -118,7 +117,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/lispasswd")
 	public String lispasswd(HttpServletRequest request,HttpSession session) {
-		logger.info("列出所有观看码");
+		Logger.getLogger(ManageController.class).info("列出所有观看码");
 		readCodes(session);
 		return "m/crtpasswd";  
 	}
@@ -163,6 +162,7 @@ public class ManageController {
     	}
         
     	File file = new File(prop.getProperty("passwdPath"));
+    	
     	
         BufferedReader reader = null;
         try {
