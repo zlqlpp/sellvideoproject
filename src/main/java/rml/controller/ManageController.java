@@ -46,7 +46,7 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/mgotopage")
-	public String mgotopage(Model model,HttpServletRequest requestv) {
+	public String mgotopage(Model model,HttpServletRequest request) {
 		
 		String page = request.getParameter("page");
 		
@@ -74,10 +74,26 @@ public class ManageController {
 		if(prop==null) {
 			prop = getProp(session);
 		}
-		Thread thread = new Thread(new MusicImplements(url));
+		Thread thread = new Thread(new MusicImplements(url,prop));
 		thread.start();
         retMap.put("stat", "suc");
 		return retMap;
+	}
+	
+	@RequestMapping(value="/clean")
+	public String clean(HttpServletRequest request,HttpSession session) {
+		
+		Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
+		}
+		File file = new File(prop.getProperty("videoPath"));
+		
+		File[] files = file.listFiles();
+		for(int i=0;i<files.length;i++){
+			files[i].delete();
+		}
+		return "mmain";  
 	}
 	
 	//---------------------------------------工具方法-------------------------
