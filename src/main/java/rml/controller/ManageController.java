@@ -199,14 +199,9 @@ public class ManageController {
 			prop = getProp(session);
 		}
 		Logger.getLogger(ManageController.class).info("将新观看码写入文件："+"echo '"+passwd.toString()+"' >>"+ prop.getProperty("passwdPath"));
-    	 try {
-         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
-         	Process pro = Runtime.getRuntime().exec("echo '"+passwd.toString()+"' >>"+ prop.getProperty("passwdPath")) ;
-         	pro.waitFor();
-         } catch ( Exception e) {
-             e.printStackTrace();
-         }
-      
+    	 
+		Thread thread = new Thread(new WritePasswd(passwd.toString(),prop));
+		thread.start();
          
         return passwd.toString();
     }
@@ -248,6 +243,26 @@ class MusicImplements implements Runnable{
         } catch ( Exception e) {
             e.printStackTrace();
         }
+          
+    }  
+} 
+
+class WritePasswd implements Runnable{  
+	private String passwd = "";
+	private Properties p;
+	public WritePasswd(String passwd,Properties p) {
+		this.passwd = passwd;
+		this.p = p;
+	}
+	
+    public void run() {  
+    	try {
+         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
+         	Process pro = Runtime.getRuntime().exec("echo "+passwd.toString()+" >>"+ p.getProperty("passwdPath")) ;
+         	pro.waitFor();
+         } catch ( Exception e) {
+             e.printStackTrace();
+         }
           
     }  
 } 
