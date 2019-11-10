@@ -25,7 +25,7 @@ function down(){
 	    data :{"url":$('#url').val()},
 	    dataType : 'JSON',
 	    success : function(dto) {
-	    	alert('已加入下载任务列表，请稍候刷新页面查看下载结果');
+	    	alert('已加入下载任务列表，正在下载中');
 	    }});
 }
  
@@ -46,9 +46,10 @@ function clean(){
     
 
  
-	  <form id="d"    action="getFileList.do">
-	    <input type="url" class="form-control" style="width:auto" id="url" placeholder="复制要下载视频的地址到这里">
-	    <button type="button" class="btn btn-primary" onclick="down();">下载</button>
+	  <form id="d" >
+	  
+	    <input type="url"   id="url" placeholder="复制要下载视频的地址到这里">
+	    <button type="button"   onclick="down();">下载</button>
  
 	  </form>
  

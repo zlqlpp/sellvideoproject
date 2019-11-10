@@ -94,6 +94,8 @@ public class MUserController {
 			e.printStackTrace();
 		}
         
+        session.setAttribute("prop", prop);
+        
         String videoPath = prop.getProperty("videoPath");
         
     	File file = new File(videoPath);
