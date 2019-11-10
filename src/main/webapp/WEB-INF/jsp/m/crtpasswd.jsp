@@ -22,7 +22,7 @@ window.οnlοad=function(){
  if(npd!=''){
 	 alert('新生成的观看码是:'+npd);
  }
-	 
+	   
 }
 
 </script>
