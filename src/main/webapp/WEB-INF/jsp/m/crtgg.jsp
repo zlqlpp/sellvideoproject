@@ -17,64 +17,26 @@
 
 
 <script>
- 
-function down(){
-	$.ajax({
-	    type : 'POST',
-	    url :'down.do',
-	    data :{"url":$('#url').val()},
-	    dataType : 'JSON',
-	    success : function(dto) {
-	    	alert('已加入下载任务列表，请稍候刷新页面查看下载结果');
-	    }});
+ var npd = "${passwd}";
+window.onload=function(){
+ if(npd!=''){
+	 alert('新生成的观看码是:'+npd);
+ }
+	   
 }
- 
-function clean(){
-		$("#d").attr("action","clean.do");
-     	$("#d").submit();
-}
+
 </script>
 </head>
 
 
 <body>
-创建广告
-<div class="container">
-<div class="row">
-	<div class="col-*-*" style="height: 100px"></div> 
-</div>
+生成广告页
+<hr>
  
-    
-
-<div class="row">
-	  <form id="d" class="form-inline"  action="getFileList.do">
-	  <div class="col-6">
-	    <input type="url" class="form-control" style="width:auto" id="url" placeholder="复制要下载视频的地址到这里">
-	    </div>
-	    <div class="col-2">
-	    <button type="button" class="btn btn-primary" onclick="down();">下载</button>
-	    </div>
-	    <div class="col-2">
-	    <button type="submit" class="btn btn-primary"  >查看文件列表</button>
-	    </div>
-	    <div class="col-2">
-	    <button type="button" class="btn btn-primary"  onclick="clean();">清理</button>
-	    </div>
-	  </form>
-</div>
-<div class="row">
-	<div class="col-*-*" style="height: 100px"></div> 
-</div>
-<c:forEach items="${files}" var="f" varStatus="status">
-<div class="row">
-	<div class="col-4"> </div>
-  	<div class="col-4"><h3><a href="/downyoutube/video/${f.name }">${f.name }</a></h3></div>
-  	<div class="col-4"> </div>
-</div>
-<hr/>
-</c:forEach>
-
-</div>
-
+  	 <a href="/m/crtgg.do">生成广告</a>
+  	 <hr>
+  	 
+   生成广告后直接复制浏览器中的地址即可，有效期5分钟
+   
 </body>
 </html>

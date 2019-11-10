@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +65,36 @@ public class ManageController {
 		} 
 		
 		return "m/mmain";
+	}
+	
+	@RequestMapping(value="/crtgg")
+	public String crtgg(Model model,HttpServletRequest request,HttpSession session) {
+		
+		 Long crtgg = (Long) session.getAttribute("crtgg");
+		
+		 Long t = new Date().getTime();
+		  
+		 if(null==crtgg||(t-crtgg)>300000) {
+			 crtgg=t;
+		 } 
+		 session.setAttribute("crtgg", crtgg);
+		 
+		 model.addAttribute("t",request.getRequestURL()+"?t="+crtgg);
+		return "m/crtgg";
+	}
+	@RequestMapping(value="/gotgg")
+	public String gotgg(Model model,HttpServletRequest request,HttpSession session) {
+		
+		 Long crtgg = (Long) session.getAttribute("crtgg");
+		
+		 Long t = new Date().getTime();
+		  
+		 if(null==crtgg||(t-crtgg)>300000) {
+			 crtgg=t;
+		 } 
+		 session.setAttribute("crtgg", crtgg);
+		 
+		return "m/crtgg";
 	}
 	
 	@ResponseBody
@@ -189,6 +220,7 @@ public class ManageController {
                 }
             }
         }
+        Collections.reverse(passwdlist);
         session.setAttribute("passwdlist", passwdlist);
         return codeString;
     }
