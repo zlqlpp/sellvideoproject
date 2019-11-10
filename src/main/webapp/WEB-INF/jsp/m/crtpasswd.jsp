@@ -17,8 +17,14 @@
 
 
 <script>
- 
-window.onload
+ var npd = '${passwd}';
+window.οnlοad=function(){
+ if(npd!=''){
+	 alert('新生成的观看码是:'+npd);
+ }
+	 
+}
+
 </script>
 </head>
 

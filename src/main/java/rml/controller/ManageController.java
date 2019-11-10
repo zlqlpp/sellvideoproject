@@ -203,6 +203,7 @@ public class ManageController {
 		Thread thread = new Thread(new WritePasswd(passwd.toString(),prop));
 		thread.start();
          
+		 
         return passwd.toString();
     }
     

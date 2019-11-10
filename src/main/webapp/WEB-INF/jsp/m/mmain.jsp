@@ -26,7 +26,7 @@ function go(v){
   	 
   	 <a href="/m/mgotopage.do?page=dwnvideo">下载视频</a>
   	 <a href="/m/regetvideolist.do">刷新前后台视频列表</a>
-  	 <a href="/m/mgotopage.do?page=crtpasswd">生成密码</a>
+  	 <a href="/m/mgotopage.do?page=crtpasswd">观看码管理</a>
   	 <a href="/m/mgotopage.do?page=crtgg">生成宣传页</a>
   	 <a href="/m/mgotopage.do?page=clsvideo">清空视频</a>
   	 
