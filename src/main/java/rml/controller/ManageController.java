@@ -258,7 +258,7 @@ class WritePasswd implements Runnable{
     public void run() {  
     	try {
          	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
-         	Process pro = Runtime.getRuntime().exec("echo "+passwd.toString()+" >>"+ p.getProperty("passwdPath")) ;
+         	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","echo "+passwd.toString()+" >>"+ p.getProperty("passwdPath")}) ;
          	pro.waitFor();
          } catch ( Exception e) {
              e.printStackTrace();
