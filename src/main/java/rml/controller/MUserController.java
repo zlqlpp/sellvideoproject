@@ -116,11 +116,11 @@ public class MUserController {
 		}
         List passwdlist = new ArrayList();
         String codeString= "";
-        
-    	File file = new File(prop.getProperty("passPath"));
-    	if(file == null) {
+        if(prop.getProperty("passPath") == null) {
     		return null;
     	}
+    	File file = new File(prop.getProperty("passPath"));
+    	
         BufferedReader reader = null;
         try {
              

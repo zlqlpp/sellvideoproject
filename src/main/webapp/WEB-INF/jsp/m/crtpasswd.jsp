@@ -26,8 +26,8 @@ window.onload
 <body>
 生成观看码
 <hr>
-	<a href="/m/crtpasswd.do">查看观看码列表</a>
-  	 <a href="/m/lispasswd.do">生成新码</a>
+	<a href="/m/lispasswd.do">查看观看码列表</a>
+  	 <a href="/m/crtpasswd.do">生成新码</a>
   	 <hr>
   	 
   	 	<table border="1" width="70%">

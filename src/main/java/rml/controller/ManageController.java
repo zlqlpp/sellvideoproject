@@ -71,7 +71,7 @@ public class ManageController {
 	public Map<String,Object> down(HttpServletRequest request,HttpSession session) {
 		Map<String,Object> retMap = new HashMap<String,Object>();
 		String url = request.getParameter("url");
-		logger.info(url);
+		logger.info("新下载视频的URL："+url);
  
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
@@ -86,6 +86,7 @@ public class ManageController {
 	@RequestMapping(value="/regetvideolist")
 	public String regetvideolist(HttpServletRequest request,HttpSession session) {
 		
+		logger.info("刷新视频列表");
 		getVideoList( session);
 		
 		return "m/mmain";  
@@ -93,7 +94,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/clean")
 	public String clean(HttpServletRequest request,HttpSession session) {
-		
+		logger.info("清空视频列表");
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
 			prop = getProp(session);
@@ -109,7 +110,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/crtpasswd")
 	public String crtpasswd(Model model,HttpServletRequest request,HttpSession session) {
-		
+		logger.info("创建观看码");
 		String passwd = writeCodes(session);
 		model.addAttribute("passwd",passwd);
 		return "m/crtpasswd";  
@@ -117,7 +118,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/lispasswd")
 	public String lispasswd(HttpServletRequest request,HttpSession session) {
-		
+		logger.info("列出所有观看码");
 		readCodes(session);
 		return "m/crtpasswd";  
 	}
@@ -157,10 +158,12 @@ public class ManageController {
         List passwdlist = new ArrayList();
         String codeString= "";
         
-    	File file = new File(prop.getProperty("passwdPath"));
-    	if(file == null) {
+        if(prop.getProperty("passwdPath") == null) {
     		return null;
     	}
+        
+    	File file = new File(prop.getProperty("passwdPath"));
+    	
         BufferedReader reader = null;
         try {
              
@@ -195,7 +198,7 @@ public class ManageController {
 		if(prop==null) {
 			prop = getProp(session);
 		}
-		
+		logger.info("将新观看码写入文件："+"echo '"+passwd.toString()+"' >>"+ prop.getProperty("passPath"));
     	 try {
          	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
          	Process pro = Runtime.getRuntime().exec("echo '"+passwd.toString()+"' >>"+ prop.getProperty("passPath")) ;
