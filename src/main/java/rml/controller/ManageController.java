@@ -80,6 +80,7 @@ public class ManageController {
 		 } 
 		 session.setAttribute("crtgg", crtgg);
 		 Logger.getLogger(ManageController.class).info("url："+request.getRequestURL());
+		 Logger.getLogger(ManageController.class).info("uri："+request.getRequestURI());
 		 model.addAttribute("t",request.getRequestURL()+"?t="+crtgg);
 		return "m/crtgg";
 	}
