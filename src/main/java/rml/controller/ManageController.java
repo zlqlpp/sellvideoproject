@@ -71,14 +71,15 @@ public class ManageController {
 	public String crtgg(Model model,HttpServletRequest request,HttpSession session) {
 		
 		 Long crtgg = (Long) session.getAttribute("crtgg");
-		
+		 Logger.getLogger(ManageController.class).info("session中的crtgg："+crtgg);
 		 Long t = new Date().getTime();
-		  
+		 Logger.getLogger(ManageController.class).info("新的的crtgg："+t);
 		 if(null==crtgg||(t-crtgg)>300000) {
 			 crtgg=t;
+			 Logger.getLogger(ManageController.class).info("新的crtgg："+crtgg);
 		 } 
 		 session.setAttribute("crtgg", crtgg);
-		 
+		 Logger.getLogger(ManageController.class).info("url："+request.getRequestURL());
 		 model.addAttribute("t",request.getRequestURL()+"?t="+crtgg);
 		return "m/crtgg";
 	}
@@ -86,11 +87,12 @@ public class ManageController {
 	public String gotgg(Model model,HttpServletRequest request,HttpSession session) {
 		
 		 Long crtgg = (Long) session.getAttribute("crtgg");
-		
+		 
 		 Long t = new Date().getTime();
-		  
+		 
 		 if(null==crtgg||(t-crtgg)>300000) {
 			 crtgg=t;
+			 
 		 } 
 		 session.setAttribute("crtgg", crtgg);
 		 
