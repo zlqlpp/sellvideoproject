@@ -117,10 +117,10 @@ public class MUserController {
 		}
         List passwdlist = new ArrayList();
         String codeString= "";
-        if(prop.getProperty("passPath") == null) {
+        if(prop.getProperty("passwdPath") == null) {
     		return null;
     	}
-    	File file = new File(prop.getProperty("passPath"));
+    	File file = new File(prop.getProperty("passwdPath"));
     	
         BufferedReader reader = null;
         try {
