@@ -36,15 +36,16 @@ public class MUserController {
 	
 	@RequestMapping(value="/listvideos")
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
-		
+		Logger.getLogger(MUserController.class).info("登录-------");
 		String code = request.getParameter("ucode");
-		
+		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		//校验输入格式，校验code是否存在
 		if(!code.equals("123456")) {
 		String codes  = (String) session.getAttribute("codes");
-		
+		Logger.getLogger(MUserController.class).info("session中的观看码："+codes);
 		if(null==codes||"".equals(codes)){
 			codes = readCodes(session);
+			Logger.getLogger(MUserController.class).info("从文件里读出来的观看码："+codes);
 		}
 		
 		if(null==code||"".equals(code)||!codes.contains(code)){

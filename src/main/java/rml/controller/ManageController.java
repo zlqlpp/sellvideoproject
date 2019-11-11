@@ -146,6 +146,15 @@ public class ManageController {
 		Logger.getLogger(ManageController.class).info("创建观看码");
 		String passwd = writeCodes(session);
 		model.addAttribute("passwd",passwd);
+		
+		String codes  = (String) session.getAttribute("codes");
+		
+		if(null==codes||"".equals(codes)){
+			codes = passwd ;
+		}else{
+			codes+=(","+passwd);
+		}
+		
 		return "m/crtpasswd";  
 	}
 	
