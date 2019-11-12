@@ -43,7 +43,7 @@ public class MUserController {
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		
 		//校验输入格式，校验code是否存在
-		if(!code.equals("123456")||ifLogin(session)) {
+		if((null!=code&&!code.equals("123456"))||!ifLogin(session)) {
 			
 		String codes  = (String) session.getAttribute("user");
 		Logger.getLogger(MUserController.class).info("session中的观看码："+codes);
