@@ -104,7 +104,7 @@ public class MUserController {
         for (int i = 0; i < fileNamesArray.length; i++) {
             if (fileNamesArray[i].isFile() ) {
             	//videolist.add( fileNamesArray[i].getName() );
-            	map.put(fileNamesArray[i].getName().split("\\."), fileNamesArray[i].getName());
+            	map.put(fileNamesArray[i].getName().split("\\.")[0], fileNamesArray[i].getName());
             }
         }
         
@@ -143,6 +143,10 @@ public class MUserController {
             	v.setVtitle(tempString.split("--------")[0]);
             	v.setVid(tempString.split("--------")[1]);
             	v.setVname((null==map.get(tempString.split("--------")[1]))?"":map.get(tempString.split("--------")[1]).toString());
+            	Logger.getLogger(MUserController.class).info("读视频列表："+v.getVid());
+            	Logger.getLogger(MUserController.class).info("读视频列表："+v.getVtitle());
+            	Logger.getLogger(MUserController.class).info("读视频列表："+v.getVname());
+            	Logger.getLogger(MUserController.class).info("读视频列表："+map.get(tempString.split("--------")[1]));
             	videolist.add(v);
                  
                 line++;

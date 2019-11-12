@@ -32,7 +32,7 @@ function go(v){
  
    		<c:forEach items="${videolist}" var="v">
    		<tr>
-   			<td height="40px"   onclick="go('${v.vid}')">${v.vname }</a></td>
+   			<td height="40px"   onclick="go('${v.vid}')">${v.vtitle }</a></td>
  
    		</tr>
    		</c:forEach>
