@@ -40,6 +40,9 @@ public class MUserController {
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		Logger.getLogger(MUserController.class).info("登录-------");
 		String code = request.getParameter("ucode");
+		if(null==code){
+			return "index";
+		}
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		
 		//校验输入格式，校验code是否存在
@@ -58,7 +61,7 @@ public class MUserController {
 		session.setAttribute("user", code);
 		
 		}
-		if(code.equals("123456")){
+		if(null!=code&&code.equals("123456")){
 			session.setAttribute("user", code);
 		}
 		//从session里读视频 ，没有就读一下目录
