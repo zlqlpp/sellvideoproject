@@ -339,13 +339,14 @@ class MusicImplements implements Runnable{
         List<String> processList = new ArrayList<String>();
 		try {
 			Process p = Runtime.getRuntime().exec("youtube-dl --get-id "+durl);
+			p.waitFor();
 			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
 			while ((line = input.readLine()) != null) {
 				processList.add(line);
 			}
 			input.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -355,13 +356,14 @@ class MusicImplements implements Runnable{
           processList = new ArrayList<String>();
 		try {
 			Process p = Runtime.getRuntime().exec("youtube-dl --e "+durl);
+			p.waitFor();
 			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
 			while ((line = input.readLine()) != null) {
 				processList.add(line);
 			}
 			input.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		String name = processList.get(0).toString();
