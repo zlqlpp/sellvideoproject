@@ -40,9 +40,7 @@ public class MUserController {
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		Logger.getLogger(MUserController.class).info("登录-------");
 		String code = request.getParameter("ucode");
-		if(null==code){
-			return "index";
-		}
+
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		
 		//校验输入格式，校验code是否存在
