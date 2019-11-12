@@ -51,6 +51,7 @@ public class ManageController {
 		if(ifLogin(session)){
 			return "m/mmain";
 		}else if(null!=code&&"1234qwer".equals(code)){
+			session.setAttribute("user", code);
 			return "m/mmain";
 		}else{
 			return "m/mlogin";
