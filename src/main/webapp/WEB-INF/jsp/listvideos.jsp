@@ -32,9 +32,7 @@ function go(v){
  
    		<c:forEach items="${videolist}" var="v">
    		<tr>
-   			<c:set var="name" value="${fn:join(v, '--------')}" /> 
-   		
-   			<td height="40px" value="${name[0] }" onclick="go('${name[1] }')">${name[0] }</a></td>
+   			<td height="40px"   onclick="go('${v.vid}')">${v.vname }</a></td>
  
    		</tr>
    		</c:forEach>

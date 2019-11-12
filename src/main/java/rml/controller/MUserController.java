@@ -22,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import rml.bean.Video;
+
 
 @Controller
 @RequestMapping("/c")
@@ -85,7 +87,7 @@ public class MUserController {
 	}
 	
 	//---------------------------------------工具方法-------------------------
-    private List getVideoListTmp(HttpSession session){
+    private Map getVideoListTmp(HttpSession session){
     	 
     	Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
@@ -96,17 +98,19 @@ public class MUserController {
     	File file = new File(prop.getProperty("videoPath"));
         File[] fileNamesArray = file.listFiles();
         
-        List<String> videolist = new ArrayList<String>();
-        if(null == fileNamesArray){return videolist;}
+        //List<String> videolist = new ArrayList<String>();
+        Map map = new HashMap<String,String>();
+        if(null == fileNamesArray){return map;}
         for (int i = 0; i < fileNamesArray.length; i++) {
             if (fileNamesArray[i].isFile() ) {
-            	videolist.add( fileNamesArray[i].getName() );
+            	//videolist.add( fileNamesArray[i].getName() );
+            	map.put(fileNamesArray[i].getName().split("."), fileNamesArray[i].getName());
             }
         }
         
-        session.setAttribute("videolist", videolist);
+        //session.setAttribute("videolist", videolist);
         
-        return videolist;
+        return map;
     }
     private List getVideoListFromTxt(HttpSession session){
     	 
@@ -114,6 +118,9 @@ public class MUserController {
 		if(prop==null) {
 			prop = getProp(session);
 		}
+		
+		Map map = getVideoListTmp(session);
+		
         List videolist = new ArrayList();
         
         if(prop.getProperty("videoNamePath") == null) {
@@ -127,11 +134,16 @@ public class MUserController {
             reader = new BufferedReader(new FileReader(file));
             String tempString = null;
             int line = 1;
+            Video v = null;
             // 一次读入一行，直到读入null为文件结束
             while ((tempString = reader.readLine()) != null) {
                 // 显示行号
                 //System.out.println("line " + line + ": " + tempString);
-            	videolist.add(tempString);
+            	v = new Video();
+            	v.setVtitle(tempString.split("--------")[0]);
+            	v.setVid(tempString.split("--------")[1]);
+            	v.setVname((null==map.get(tempString.split("--------")[1]))?"":map.get(tempString.split("--------")[1]).toString());
+            	videolist.add(v);
                  
                 line++;
             }
