@@ -48,8 +48,13 @@ public class ManageController {
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		
 		String code = request.getParameter("passwd");
-		
-		return "m/mmain";
+		if(ifLogin(session)){
+			return "m/mmain";
+		}else if(null!=code&&"1234qwer".equals(code)){
+			return "m/mmain";
+		}else{
+			return "m/mlogin";
+		}
 	}
 	
 	@RequestMapping(value="/mgotopage")
@@ -182,6 +187,12 @@ public class ManageController {
 	}
 	
 	//---------------------------------------工具方法-------------------------
+	private boolean ifLogin(HttpSession session){
+		if(null!=session.getAttribute("user")){
+			return true;
+		}
+		return false;
+	}
 	private Map getVideoListTmp(HttpSession session){
    	 
     	Properties prop = (Properties) session.getAttribute("prop");

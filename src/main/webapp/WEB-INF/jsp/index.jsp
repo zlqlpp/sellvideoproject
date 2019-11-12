@@ -17,7 +17,7 @@
   </head>
   
   <body>
-    	欢迎 <a href="/m/mlogin.do">转后台</a><br>
+    	<!-- 欢迎 <a href="/m/mlogin.do">转后台</a><br> -->
     	<hr>
     
     <form action="/c/listvideos.do" method="post" >

@@ -41,8 +41,9 @@ public class MUserController {
 		Logger.getLogger(MUserController.class).info("登录-------");
 		String code = request.getParameter("ucode");
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
+		
 		//校验输入格式，校验code是否存在
-		if(!code.equals("123456")) {
+		if(!code.equals("123456")||ifLogin(session)) {
 		String codes  = (String) session.getAttribute("codes");
 		Logger.getLogger(MUserController.class).info("session中的观看码："+codes);
 		if(null==codes||"".equals(codes)){
@@ -53,7 +54,10 @@ public class MUserController {
 		if(null==code||"".equals(code)||!codes.contains(code)){
 			return "index";
 		}
+		session.setAttribute("user", code);
+		
 		}
+		
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
@@ -68,7 +72,9 @@ public class MUserController {
 	
 	@RequestMapping(value="/openvideo")
 	public String openvideo(Model model,HttpServletRequest request,HttpSession session) {
-		
+		if(ifLogin(session)){
+			return "index";
+		}
 		String videoname = request.getParameter("video");
 		if(null==videoname||"".equals(videoname)){
 			return "index";
@@ -87,6 +93,12 @@ public class MUserController {
 	}
 	
 	//---------------------------------------工具方法-------------------------
+	private boolean ifLogin(HttpSession session){
+		if(null!=session.getAttribute("user")){
+			return true;
+		}
+		return false;
+	}
     private Map getVideoListTmp(HttpSession session){
     	 
     	Properties prop = (Properties) session.getAttribute("prop");
