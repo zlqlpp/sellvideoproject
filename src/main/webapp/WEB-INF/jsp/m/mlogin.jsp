@@ -21,7 +21,7 @@
     	<hr>
     
     <form action="/m/mmain.do" method="post" >
-    	<input type="text" name="passwd" id="passwd" value="输入管理密码"/>
+    	<input type="text" name="passwd" id="passwd" value=""/>
     	<input type="submit" value="提交"/>
     </form>
   </body>

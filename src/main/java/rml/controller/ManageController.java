@@ -51,7 +51,7 @@ public class ManageController {
 		if(ifLogin(session)){
 			return "m/mmain";
 		}else if(null!=code&&"1234qwer".equals(code)){
-			session.setAttribute("user", code);
+			session.setAttribute("muser", code);
 			return "m/mmain";
 		}else{
 			return "m/mlogin";
@@ -189,7 +189,7 @@ public class ManageController {
 	
 	//---------------------------------------工具方法-------------------------
 	private boolean ifLogin(HttpSession session){
-		if(null!=session.getAttribute("user")){
+		if(null!=session.getAttribute("muser")){
 			return true;
 		}
 		return false;
