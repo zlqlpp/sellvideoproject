@@ -142,6 +142,10 @@ public class ManageController {
 		for(int i=0;i<files.length;i++){
 			files[i].delete();
 		}
+		
+		Thread thread = new Thread(new CleanVideo(prop));
+		thread.start();
+		
 		return "m/mmain";  
 	}
 	
@@ -405,6 +409,23 @@ class WritePasswd implements Runnable{
     	try {
          	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
          	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","echo "+passwd.toString()+" >>"+ p.getProperty("passwdPath")}) ;
+         	pro.waitFor();
+         } catch ( Exception e) {
+             e.printStackTrace();
+         }
+          
+    }  
+} 
+
+class CleanVideo implements Runnable{  
+	private Properties p;
+	public CleanVideo(Properties p) {
+		this.p = p;
+	}
+	
+    public void run() {  
+    	try {
+         	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c"," >"+ p.getProperty("videoNamePath")}) ;
          	pro.waitFor();
          } catch ( Exception e) {
              e.printStackTrace();
