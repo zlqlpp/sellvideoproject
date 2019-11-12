@@ -146,6 +146,7 @@ public class ManageController {
 		Thread thread = new Thread(new CleanVideo(prop));
 		thread.start();
 		
+		session.setAttribute("videolist", new ArrayList());
 		return "m/mmain";  
 	}
 	

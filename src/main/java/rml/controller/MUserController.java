@@ -61,7 +61,7 @@ public class MUserController {
 		}
 		//返回前台
 		Logger.getLogger(MUserController.class).info("----------log4j-------------");
-		model.addAttribute("videolist", videolist);
+		//model.addAttribute("videolist", videolist);
 		
 		return "listvideos";
 	}
