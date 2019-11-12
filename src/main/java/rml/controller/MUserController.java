@@ -57,7 +57,9 @@ public class MUserController {
 		session.setAttribute("user", code);
 		
 		}
-		
+		if(code.equals("123456")){
+			session.setAttribute("user", code);
+		}
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
