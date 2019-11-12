@@ -75,7 +75,7 @@ public class MUserController {
 	
 	@RequestMapping(value="/openvideo")
 	public String openvideo(Model model,HttpServletRequest request,HttpSession session) {
-		if(ifLogin(session)){
+		if(!ifLogin(session)){
 			return "index";
 		}
 		String videoname = request.getParameter("video");
