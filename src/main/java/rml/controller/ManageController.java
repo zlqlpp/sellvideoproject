@@ -72,11 +72,18 @@ public class ManageController {
 	
 	@RequestMapping(value="/crtgg")
 	public String crtgg(Model model,HttpServletRequest request,HttpSession session) {
-		
-		 Long crtgg = (Long) session.getAttribute("crtgg");
-		 Logger.getLogger(ManageController.class).info("session中的crtgg："+crtgg);
 		 Long t = new Date().getTime();
 		 Logger.getLogger(ManageController.class).info("新的的crtgg："+t);
+		 
+		 String reqeustT = request.getParameter("t");
+		 if(null!=reqeustT&&t-Long.parseLong(reqeustT)<300000){
+			 return "m/crtggdetail";
+		 }
+		 
+		 
+		 Long crtgg = (Long) session.getAttribute("crtgg");
+		 Logger.getLogger(ManageController.class).info("session中的crtgg："+crtgg);
+		 
 		 if(null==crtgg||(t-crtgg)>300000) {
 			 crtgg=t;
 			 Logger.getLogger(ManageController.class).info("新的crtgg："+crtgg);
@@ -124,7 +131,7 @@ public class ManageController {
 	public String regetvideolist(HttpServletRequest request,HttpSession session) {
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		getVideoListFromTxt( session);
+		this.getVideoListFromTxt( session);
 		
 		return "m/mmain";  
 	}

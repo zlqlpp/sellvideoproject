@@ -20,7 +20,7 @@
  var npd = "${t}";
 window.onload=function(){
  if(npd!=''){
-	 alert('新生成的观看码是:'+npd);
+	 alert('此链接就是广告页:'+npd);
  }
 	   
 }
@@ -35,7 +35,7 @@ window.onload=function(){
  
   	 <a href="/m/crtgg.do">生成广告</a>
   	 <hr>
-  	 
+  	 <a href="${t}">点击跳转到广告</a>
    生成广告后直接复制浏览器中的地址即可，有效期5分钟
    
 </body>
