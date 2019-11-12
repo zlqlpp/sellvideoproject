@@ -104,7 +104,7 @@ public class MUserController {
         for (int i = 0; i < fileNamesArray.length; i++) {
             if (fileNamesArray[i].isFile() ) {
             	//videolist.add( fileNamesArray[i].getName() );
-            	map.put(fileNamesArray[i].getName().split("."), fileNamesArray[i].getName());
+            	map.put(fileNamesArray[i].getName().split("\\."), fileNamesArray[i].getName());
             }
         }
         
