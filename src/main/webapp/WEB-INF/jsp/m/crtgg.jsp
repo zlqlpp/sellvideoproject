@@ -30,7 +30,7 @@ window.onload=function(){
 
 
 <body>
-生成广告页
+生成广告页 <a href="/m/mmain.do">返回列表</a>
 <hr>
  
   	 <a href="/m/crtgg.do">生成广告</a>

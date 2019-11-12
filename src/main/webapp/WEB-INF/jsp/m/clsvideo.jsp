@@ -32,7 +32,7 @@ function clean(){
 
 
 <body>
-清空视频
+清空视频 <a href="/m/mmain.do">返回列表</a>
 <hr>
  
     

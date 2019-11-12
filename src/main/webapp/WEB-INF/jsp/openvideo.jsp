@@ -29,6 +29,7 @@
  <iframe src='/zhibing_mybatis/video/${video }?rel=0' frameborder='0' width='600px' height='400px' allowfullscreen='true'  ></iframe>
 <br>
 <hr>
+<a href="/c/listvideos.do">返回列表</a>
 
 </body>
 </html>
