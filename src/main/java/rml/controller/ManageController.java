@@ -355,7 +355,7 @@ class MusicImplements implements Runnable{
  
           processList = new ArrayList<String>();
 		try {
-			Process p = Runtime.getRuntime().exec("youtube-dl --e "+durl);
+			Process p = Runtime.getRuntime().exec("youtube-dl --get-filename "+durl);
 			p.waitFor();
 			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
