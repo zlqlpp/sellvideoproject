@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -108,10 +109,11 @@ public class ManageController {
 		Logger.getLogger(ManageController.class).info("新下载视频的URL："+url);
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
-			prop = getProp(session);
+			prop = this.getProp(session);
 		}
 		Thread thread = new Thread(new MusicImplements(url,prop));
 		thread.start();
+		
         retMap.put("stat", "suc");
 		return retMap;
 	}
@@ -120,7 +122,7 @@ public class ManageController {
 	public String regetvideolist(HttpServletRequest request,HttpSession session) {
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		getVideoList( session);
+		getVideoListFromTxt( session);
 		
 		return "m/mmain";  
 	}
@@ -167,8 +169,8 @@ public class ManageController {
 	
 	//---------------------------------------工具方法-------------------------
 
-    private List getVideoList(HttpSession session){
-    	 
+	private List getVideoListTmp(HttpSession session){
+   	 
     	Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
 			prop = getProp(session);
@@ -189,6 +191,50 @@ public class ManageController {
         session.setAttribute("videolist", videolist);
         
         return videolist;
+    }
+    private List getVideoListFromTxt(HttpSession session){
+    	 
+    	Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
+		}
+        List videolist = new ArrayList();
+        
+        if(prop.getProperty("videoNamePath") == null) {
+    		return null;
+    	}
+    	File file = new File(prop.getProperty("videoNamePath"));
+    	
+        BufferedReader reader = null;
+        try {
+             
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            int line = 1;
+            // 一次读入一行，直到读入null为文件结束
+            while ((tempString = reader.readLine()) != null) {
+                // 显示行号
+                //System.out.println("line " + line + ": " + tempString);
+            	videolist.add(tempString);
+                 
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+        
+        session.setAttribute("videolist", videolist);
+        
+        return videolist;
+        
     }
     
     private String readCodes(HttpSession session){
@@ -282,13 +328,55 @@ class MusicImplements implements Runnable{
 	
     public void run() {  
         try {
-        	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
-        	Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"%(title)s.%(ext)s "+durl);
+        	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(title)s.%(ext)s "+durl);
+        	Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"%(id)s.%(ext)s "+durl);
         	pro.waitFor();
         } catch ( Exception e) {
             e.printStackTrace();
         }
-          
+        Logger.getLogger(MusicImplements.class).info("视频下载---下载完成" );
+        
+        List<String> processList = new ArrayList<String>();
+		try {
+			Process p = Runtime.getRuntime().exec("youtube-dl --get-id "+durl);
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = "";
+			while ((line = input.readLine()) != null) {
+				processList.add(line);
+			}
+			input.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		String id = processList.get(0).toString();
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频id："+processList.get(0).toString() );
+ 
+          processList = new ArrayList<String>();
+		try {
+			Process p = Runtime.getRuntime().exec("youtube-dl --e "+durl);
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = "";
+			while ((line = input.readLine()) != null) {
+				processList.add(line);
+			}
+			input.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String name = processList.get(0).toString();
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频名字："+ processList.get(0).toString());  
+		
+		
+    	try {
+         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
+         	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","echo '"+name+"--------"+id+"' >>"+ p.getProperty("videoNamePath")}) ;
+         	pro.waitFor();
+         } catch ( Exception e) {
+             e.printStackTrace();
+         }
+    	Logger.getLogger(MusicImplements.class).info("视频下载---视频写入文件："+ name+"--------"+id); 
+    	//--get-duration  获取时长
     }  
 } 
 

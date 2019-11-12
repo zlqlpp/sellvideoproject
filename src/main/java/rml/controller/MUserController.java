@@ -55,7 +55,7 @@ public class MUserController {
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
-			videolist = getVideoList(session);
+			videolist = getVideoListFromTxt(session);
 		}
 		//返回前台
 		Logger.getLogger(MUserController.class).info("----------log4j-------------");
@@ -85,7 +85,7 @@ public class MUserController {
 	}
 	
 	//---------------------------------------工具方法-------------------------
-    private List getVideoList(HttpSession session){
+    private List getVideoListTmp(HttpSession session){
     	 
     	Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
@@ -108,7 +108,50 @@ public class MUserController {
         
         return videolist;
     }
-    
+    private List getVideoListFromTxt(HttpSession session){
+    	 
+    	Properties prop = (Properties) session.getAttribute("prop");
+		if(prop==null) {
+			prop = getProp(session);
+		}
+        List videolist = new ArrayList();
+        
+        if(prop.getProperty("videoNamePath") == null) {
+    		return null;
+    	}
+    	File file = new File(prop.getProperty("videoNamePath"));
+    	
+        BufferedReader reader = null;
+        try {
+             
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            int line = 1;
+            // 一次读入一行，直到读入null为文件结束
+            while ((tempString = reader.readLine()) != null) {
+                // 显示行号
+                //System.out.println("line " + line + ": " + tempString);
+            	videolist.add(tempString);
+                 
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+        
+        session.setAttribute("videolist", videolist);
+        
+        return videolist;
+        
+    }
     private String readCodes(HttpSession session){
      	 
     	Properties prop = (Properties) session.getAttribute("prop");
