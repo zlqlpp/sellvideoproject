@@ -83,6 +83,8 @@ public class ManageController {
 		 
 		 String reqeustT = request.getParameter("t");
 		 if(null!=reqeustT&&t-Long.parseLong(reqeustT)<300000){
+			 
+			 model.addAttribute("videolist",getVideoListFromTxt(session));
 			 return "m/crtggdetail";
 		 }
 		 
