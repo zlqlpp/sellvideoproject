@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body>
-  	<h3>列表</h3>
+  	<h3>列表</h3> <a href="c/index.do">观看</a>
   	 <form action="/c/openvideo.do" method="post"  id="f">
   	 	<input type="hidden" id="video" name="video" />
   	 </form>
