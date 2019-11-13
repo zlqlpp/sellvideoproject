@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import rml.bean.User;
 import rml.bean.Video;
 
 
@@ -56,7 +57,10 @@ public class MUserController {
 		if(null==code||"".equals(code)||!codes.contains(code)){
 			return "index";
 		}
-		session.setAttribute("user", code);
+		User user = new User();
+		user.setCode(code);
+		user.setCount(10);
+		session.setAttribute("user", user);
 		
 		}
 		if(null!=code&&code.equals("123456")){
@@ -79,6 +83,8 @@ public class MUserController {
 		if(!ifLogin(session)){
 			return "index";
 		}
+		
+		
 		String videoname = request.getParameter("video");
 		if(null==videoname||"".equals(videoname)){
 			return "index";
@@ -91,8 +97,15 @@ public class MUserController {
 		
 		//跳到播放页
 		 model.addAttribute("video", videoname);
-		
-		
+		 User user = (User) session.getAttribute("user");
+		int count = user.getCount();
+		if(count==0){
+			return "index";
+		}else{
+			user.setCount(count-1);
+			session.setAttribute("user",user);
+		}
+		 
 		return "openvideo";
 	}
 	
