@@ -53,8 +53,11 @@ public class MUserController {
 			codes = readCodes(session);
 			Logger.getLogger(MUserController.class).info("从文件里读出来的观看码："+codes);
 		}
-		
+		Logger.getLogger(MUserController.class).info("code："+code);
+		Logger.getLogger(MUserController.class).info("codes："+codes);
+		Logger.getLogger(MUserController.class).info("!codes.contains(code)："+!codes.contains(code));
 		if(null==code||"".equals(code)||!codes.contains(code)){
+			Logger.getLogger(MUserController.class).info("跳首页：");
 			return "index";
 		}
 		User user = new User();
