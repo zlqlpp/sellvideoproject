@@ -47,7 +47,7 @@ public class MUserController {
 		//校验输入格式，校验code是否存在
 		if((null!=code&&!code.equals("123456"))||!ifLogin(session)) {
 			
-		String codes  = (String) session.getAttribute("user");
+		String codes  = (String) session.getAttribute("codes");
 		Logger.getLogger(MUserController.class).info("session中的观看码："+codes);
 		if(null==codes||"".equals(codes)){
 			codes = readCodes(session);
@@ -238,6 +238,7 @@ public class MUserController {
         }
         
         session.setAttribute("passwdlist", passwdlist);
+        session.setAttribute("codes", codeString);
         
         return codeString;
         

@@ -23,6 +23,7 @@ function go(v){
 </head>
 <body>
   	<h3>列表</h3>  <a href="#">用户：${user.code },剩余观看次数：${user.count }</a>
+  	<br/><br/>
   	 <form action="/c/openvideo.do" method="post"  id="f">
   	 	<input type="hidden" id="video" name="video" />
   	 </form>
