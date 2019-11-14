@@ -184,20 +184,28 @@ public class ManageController {
 		user.setCount(Integer.parseInt(count));
 		
 		Jedis jedis = RedisUtil.getJedis();
-		String str = jedis.get("codemap");
 		
+		
+		
+		String str = jedis.get("codemap");
 		Map map = new HashMap();
 		if(StringUtils.isNotBlank(str)){
 		    map = JSON.parseObject(str,HashMap.class);
-			map.put(user.getCode(), user);
-		}else{
-			
-			map.put(user.getCode(), user);
 		}
-		
+		map.put(user.getCode(), user);
 		jedis.set("codemap", JSON.toJSONString(map));
 		
-		Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",并存放redis");
+		
+		str = jedis.get("codelist");
+		List codelist = new ArrayList();
+		if(StringUtils.isNotBlank(str)){
+		    codelist = JSON.parseObject(str,ArrayList.class);
+		}
+			codelist.add(user);
+		jedis.set("codelist", JSON.toJSONString(codelist));
+		
+		
+		Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",并存放redis,一份map,一份list");
 
 		RedisUtil.returnResource(jedis);
 		
@@ -212,20 +220,15 @@ public class ManageController {
 		//readCodes(session);
 		
 		Jedis jedis = RedisUtil.getJedis();
-		String str = jedis.get("codemap");
+		String str = jedis.get("codeList");
 		
-		Map map = new HashMap();
+		List codelist = new ArrayList();
 		if(StringUtils.isNotBlank(str)){
-		    map = JSON.parseObject(str,HashMap.class);
+		    codelist = JSON.parseObject(str,ArrayList.class);
 		}
 		
-		List userList = new ArrayList();
-		Set set = map.keySet();
-		Iterator iterator = set.iterator();
-		while(iterator.hasNext()){
-			userList.add(map.get(iterator.next()));
-		}
-		model.addAttribute("passwdlist",userList);
+		Collections.reverse(codelist);
+		model.addAttribute("passwdlist",codelist);
 		
 		return "m/crtpasswd";  
 	}
