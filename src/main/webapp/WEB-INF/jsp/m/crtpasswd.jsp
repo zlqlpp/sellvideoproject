@@ -62,11 +62,14 @@ window.onload=function(){
   	 <hr>
   	 
   	 	<table border="1" width="70%">
- 
+ 		<tr>
+   			<td height="40px" >观看码</td>
+ 			<td  >剩余观看次数</td>
+   		</tr>
    		<c:forEach items="${passwdlist}" var="v">
    		<tr>
-   			<td height="40px" value="${v }"  >${v }</a></td>
- 
+   			<td height="40px" >${v.code }</td>
+ 			<td  >${v.count }</td>
    		</tr>
    		</c:forEach>
    </table>
