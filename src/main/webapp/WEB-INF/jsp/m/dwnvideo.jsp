@@ -25,6 +25,7 @@ function down(){
 	    dataType : 'JSON',
 	    success : function(dto) {
 	    	alert('已加入下载任务列表，正在下载中');
+	    	document.getElementById("url").value="";;
 	    }});
 }
  
@@ -52,7 +53,7 @@ function down(){
  
 	  <form id="d" >
 	  
-	    <input type="url"  style="width:200px" id="url" placeholder="复制要下载视频的地址到这里">
+	    <input type="url"  id="url" style="width:200px" id="url" placeholder="复制要下载视频的地址到这里">
 	    <button type="button"   onclick="down();">下载</button>
  
 	  </form>
