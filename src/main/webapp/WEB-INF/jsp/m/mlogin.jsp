@@ -25,7 +25,7 @@
 <div id="header" style="background-color:#EEEEEE;">
 <h1 style="margin-bottom:0;">后台管理</h1></div>
  
-<div id="menu" style="background-color:#EEEEEE;height:200px;width:100px;float:left;">
+<div id="menu" style="background-color:#EEEEEE;height:20%;width:100px;float:left;">
  </div>
  
 <div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
