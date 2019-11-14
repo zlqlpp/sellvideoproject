@@ -201,6 +201,8 @@ public class ManageController {
 
 		RedisUtil.returnResource(jedis);
 		
+		model.addAttribute("newcode", user.getCode());
+		
 		return "m/crtpasswd";  
 	}
 	
