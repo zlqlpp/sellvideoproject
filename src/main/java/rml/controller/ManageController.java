@@ -10,14 +10,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Logger;
@@ -29,6 +32,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+
+import redis.clients.jedis.Jedis;
+import rml.RedisUtil;
+import rml.bean.User;
 import rml.bean.Video;
 
 
@@ -168,24 +176,55 @@ public class ManageController {
 	@RequestMapping(value="/crtpasswd")
 	public String crtpasswd(Model model,HttpServletRequest request,HttpSession session) {
 		Logger.getLogger(ManageController.class).info("创建观看码");
-		String passwd = writeCodes(session);
-		model.addAttribute("passwd",passwd);
 		
-		String codes  = (String) session.getAttribute("codes");
+		String count = request.getParameter("count");
+		Long code = new Date().getTime();
+		User user = new User();
+		user.setCode(code.toString());
+		user.setCount(Integer.parseInt(count));
 		
-		if(null==codes||"".equals(codes)){
-			codes = passwd ;
+		Jedis jedis = RedisUtil.getJedis();
+		String str = jedis.get("codemap");
+		
+		Map map = new HashMap();
+		if(StringUtils.isNotBlank(str)){
+		    map = JSON.parseObject(str,HashMap.class);
+			map.put(user.getCode(), user);
 		}else{
-			codes+=(","+passwd);
+			
+			map.put(user.getCode(), user);
 		}
+		
+		jedis.set("codemap", JSON.toJSONString(map));
+		
+		Logger.getLogger(ManageController.class).info("创建观看码,code:"+user.getCode()+",观看次数，count:"+user.getCount()+",并存放redis");
+
+		RedisUtil.returnResource(jedis);
 		
 		return "m/crtpasswd";  
 	}
 	
 	@RequestMapping(value="/lispasswd")
-	public String lispasswd(HttpServletRequest request,HttpSession session) {
+	public String lispasswd(Model model,HttpServletRequest request,HttpSession session) {
 		Logger.getLogger(ManageController.class).info("列出所有观看码");
-		readCodes(session);
+		//readCodes(session);
+		
+		Jedis jedis = RedisUtil.getJedis();
+		String str = jedis.get("codemap");
+		
+		Map map = new HashMap();
+		if(StringUtils.isNotBlank(str)){
+		    map = JSON.parseObject(str,HashMap.class);
+		}
+		
+		List userList = new ArrayList();
+		Set set = map.keySet();
+		Iterator iterator = set.iterator();
+		while(iterator.hasNext()){
+			userList.add(map.get(iterator.next()));
+		}
+		model.addAttribute("passwdlist",userList);
+		
 		return "m/crtpasswd";  
 	}
 	

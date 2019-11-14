@@ -41,10 +41,24 @@ window.onload=function(){
   	 <br><br>
   	 <hr/>
   	 
-生成观看码    <a href="/m/mmain.do">返回列表</a>
+生成观看码    
 <hr>
-	 <a id="rush" href="/m/lispasswd.do">查看观看码列表</a>
-  	 <a href="/m/crtpasswd.do">生成新码</a>
+	 <a id="rush" href="/m/lispasswd.do">刷新观看码列表</a>
+	 <form id="f" action="/m/crtpasswd.do" method="post">
+	 	<select name="count">
+	 		<option value="1">1</option>
+	 		<option value="2">2</option>
+	 		<option value="3">3</option>
+	 		<option value="4">4</option>
+	 		<option value="5" default>5</option>
+	 		<option value="6">6</option>
+	 		<option value="7">7</option>
+	 		<option value="8">8</option>
+	 		<option value="9">9</option>
+	 		<option value="10">10</option>
+	 	</select>
+	 	<input type="submit" value="生成新的观看码"/>
+	 </form> 
   	 <hr>
   	 
   	 	<table border="1" width="70%">
