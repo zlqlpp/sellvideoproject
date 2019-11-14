@@ -226,7 +226,7 @@ public class ManageController {
 		if(StringUtils.isNotBlank(str)){
 		    codelist = JSON.parseObject(str,ArrayList.class);
 		}
-		
+		RedisUtil.returnResource(jedis);
 		Collections.reverse(codelist);
 		model.addAttribute("passwdlist",codelist);
 		

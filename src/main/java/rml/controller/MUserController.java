@@ -7,20 +7,25 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.alibaba.fastjson.JSON;
 
 import redis.clients.jedis.Jedis;
 import rml.RedisUtil;
@@ -44,9 +49,7 @@ public class MUserController {
 		Logger.getLogger(MUserController.class).info("登录-------");
 		String code = request.getParameter("ucode");
 		
-		Jedis jedis = RedisUtil.getJedis();
-		jedis.set("1", "hello");
-		Logger.getLogger(MUserController.class).info("redis："+jedis.get("1"));
+
 		
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		
@@ -66,10 +69,8 @@ public class MUserController {
 			Logger.getLogger(MUserController.class).info("跳首页：");
 			return "index";
 		}
-		User user = new User();
-		user.setCode(code);
-		user.setCount(10);
-		session.setAttribute("user", user);
+ 
+		session.setAttribute("user", code);
 		
 		}
 		if(null!=code&&code.equals("123456")){
@@ -82,7 +83,15 @@ public class MUserController {
 		}
 		//返回前台
 		Logger.getLogger(MUserController.class).info("----------log4j-------------");
-		//model.addAttribute("videolist", videolist);
+		Jedis jedis = RedisUtil.getJedis();
+		 String str = jedis.get("codemap");
+			
+			Map codemap = new HashMap();
+			if(StringUtils.isNotBlank(str)){
+			    codemap = JSON.parseObject(str,HashMap.class);
+			}
+			
+		model.addAttribute("user", codemap.get(code));
 		
 		return "listvideos";
 	}
@@ -100,20 +109,54 @@ public class MUserController {
 		}
 		
 		
-		//从session里读一下code的使用量
-		
-		//code使用量-1，放入session
-		
 		//跳到播放页
 		 model.addAttribute("video", videoname);
-		 User user = (User) session.getAttribute("user");
-		int count = user.getCount();
-		if(count==0){
-			return "index";
-		}else{
-			user.setCount(count-1);
-			session.setAttribute("user",user);
-		}
+		 String code =  (String) session.getAttribute("user");
+		 
+		 
+		 
+			Jedis jedis = RedisUtil.getJedis();
+			String str = jedis.get("codelist");
+			
+			List codelist = new ArrayList();
+			if(StringUtils.isNotBlank(str)){
+			    codelist = JSON.parseObject(str,ArrayList.class);
+			}
+			User user = null;
+			for(int i=0;i<codelist.size();i++){
+				user = (User) codelist.get(i);
+				if(code.equals(user.getCode())){
+					if(user.getCount()==0){
+						return "index";
+					}
+					user.setCount(user.getCount()-1);
+					jedis.set("codelist", JSON.toJSONString(codelist));
+					break;
+				}
+			}
+			
+			 str = jedis.get("codemap");
+			
+			Map codemap = new HashMap();
+			if(StringUtils.isNotBlank(str)){
+			    codemap = JSON.parseObject(str,HashMap.class);
+			}
+			 user = null;
+			 Set set = codemap.keySet();
+			 Iterator iterator = set.iterator();
+			 while(iterator.hasNext()){
+				 user = (User) codemap.get(iterator.next());
+				 if(code.equals(user.getCode())){
+					 user.setCount(user.getCount()-1);
+					 jedis.set("codemap", JSON.toJSONString(codemap));
+						break;
+				 }
+			 }
+	 
+			
+			RedisUtil.returnResource(jedis);
+		 
+		 
 		 
 		return "openvideo";
 	}
