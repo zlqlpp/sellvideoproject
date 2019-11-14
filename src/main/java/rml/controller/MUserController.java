@@ -47,10 +47,11 @@ public class MUserController {
 		Jedis jedis = RedisUtil.getJedis();
 		jedis.set("1", "hello");
 		Logger.getLogger(MUserController.class).info("redis："+jedis.get("1"));
+		
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		
 		//校验输入格式，校验code是否存在
-		if((null!=code&&!code.equals("123456"))||!ifLogin(session)) {
+		if((null!=code&&!code.equals("123456"))&&!ifLogin(session)) {
 			
 		String codes  = null;//(String) session.getAttribute("codes");
 		//Logger.getLogger(MUserController.class).info("session中的观看码："+codes);
