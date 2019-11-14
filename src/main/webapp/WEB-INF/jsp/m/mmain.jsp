@@ -10,6 +10,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>videoList</title>
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
 <script type="text/javascript">
 function go(v){
 	document.getElementById('video').value=v;
@@ -24,7 +34,7 @@ function go(v){
   	<h3>列表</h3>
  
   	 
-  	 <a href="/m/mgotopage.do?page=dwnvideo">下载视频</a>
+  	 <a href="/m/mgotopage.do?page=dwnvideo" class="btn btn-default">下载视频</a>
   	 <a href="/m/regetvideolist.do">刷新前后台视频列表</a>
   	 <a href="/m/mgotopage.do?page=crtpasswd">观看码管理</a>
   	 <a href="/m/mgotopage.do?page=crtgg">生成宣传页</a>
