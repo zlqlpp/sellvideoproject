@@ -48,50 +48,40 @@ public class MUserController {
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		Logger.getLogger(MUserController.class).info("登录-------");
 		String code = request.getParameter("ucode");
-		
-
-		
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		
-		//校验输入格式，校验code是否存在
-		if((null!=code&&!code.equals("123456"))&&!ifLogin(session)) {
-			
-		String codes  = null;//(String) session.getAttribute("codes");
-		//Logger.getLogger(MUserController.class).info("session中的观看码："+codes);
-		if(null==codes||"".equals(codes)){
-			codes = readCodes(session);
-			Logger.getLogger(MUserController.class).info("从文件里读出来的观看码："+codes);
-		}
-		Logger.getLogger(MUserController.class).info("code："+code);
-		Logger.getLogger(MUserController.class).info("codes："+codes);
-		Logger.getLogger(MUserController.class).info("!codes.contains(code)："+!codes.contains(code));
-		if(null==code||"".equals(code)||!codes.contains(code)){
-			Logger.getLogger(MUserController.class).info("跳首页：");
-			return "index";
-		}
- 
-		session.setAttribute("user", code);
 		
-		}
-		if(null!=code&&code.equals("123456")){
-			session.setAttribute("user", code);
-		}
 		//从session里读视频 ，没有就读一下目录
 		List videolist =   (List) session.getAttribute("videolist");
 		if(null==videolist){
 			videolist = getVideoListFromTxt(session);
 		}
-		//返回前台
-		Logger.getLogger(MUserController.class).info("----------log4j-------------");
+		
 		Jedis jedis = RedisUtil.getJedis();
-		 String str = jedis.get("codemap");
-			
-			Map codemap = new HashMap();
-			if(StringUtils.isNotBlank(str)){
-			    codemap = JSON.parseObject(str,HashMap.class);
-			}
-			
-		model.addAttribute("user", codemap.get(code));
+		String str = jedis.get("codemap");
+		
+		Map codemap = new HashMap();
+		if(StringUtils.isNotBlank(str)){
+		    codemap = JSON.parseObject(str,HashMap.class);
+		}
+		
+		User user = null;
+		if(code!=null){
+				if(codemap.containsKey(code)){
+					user = (User) codemap.get(code);
+					session.setAttribute("user", code);
+				}else{
+					 return "index";
+				}
+					
+		}else if(code==null&&null!=session.getAttribute("user")){
+			user = (User) codemap.get(code);
+			session.setAttribute("user", code);
+		}else{
+			 return "index";
+		}
+		
+		RedisUtil.returnResource(jedis);
 		
 		return "listvideos";
 	}
