@@ -22,13 +22,15 @@
     
     <div id="container" style="width:100%">
  
-<div id="header" style="background-color:#EEEEEE;">
-<h1 style="margin-bottom:0;">后台管理</h1></div>
+<div id="header" style="background-color:#EEEEEE;height:20%;width:100%;">
+</div>
  
 <div id="menu" style="background-color:#EEEEEE;height:100%;width:20%;float:left;">
  </div>
  
 <div id="content" style="background-color:#EEEEEE;height:100%;width:80%;float:left;">
+<h3 style="margin-bottom:0;">后台管理</h3>
+<br/><hr>
 	<form action="/m/mmain.do" method="post" >
     	<input type="text" name="passwd" id="passwd" value=""/>
     	<input type="submit" value="提交"/>
