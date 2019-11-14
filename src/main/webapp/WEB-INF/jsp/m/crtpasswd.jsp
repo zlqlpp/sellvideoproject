@@ -21,6 +21,7 @@
 window.onload=function(){
  if(npd!=''){
 	 alert('新生成的观看码是:'+npd);
+	 document.getElementById("rush").click();
  }
 	   
 }
@@ -42,7 +43,7 @@ window.onload=function(){
   	 
 生成观看码    <a href="/m/mmain.do">返回列表</a>
 <hr>
-	<a href="/m/lispasswd.do">查看观看码列表</a>
+	 <a id="rush" href="/m/lispasswd.do">查看观看码列表</a>
   	 <a href="/m/crtpasswd.do">生成新码</a>
   	 <hr>
   	 

@@ -46,13 +46,13 @@ function down(){
 
 下载视频
  <hr>
- <a href="/m/mmain.do">返回列表</a>
+ <!-- <a href="/m/mmain.do">返回列表</a> -->
     
 
  
 	  <form id="d" >
 	  
-	    <input type="url"   id="url" placeholder="复制要下载视频的地址到这里">
+	    <input type="url"  style="width:200px" id="url" placeholder="复制要下载视频的地址到这里">
 	    <button type="button"   onclick="down();">下载</button>
  
 	  </form>
