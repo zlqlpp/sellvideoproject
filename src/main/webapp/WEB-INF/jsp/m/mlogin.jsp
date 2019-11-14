@@ -20,12 +20,12 @@
  
   	 
     
-    <div id="container" style="width:500px">
+    <div id="container" style="width:100%">
  
-<div id="header" style="background-color:#FFA500;">
+<div id="header" style="background-color:#EEEEEE;">
 <h1 style="margin-bottom:0;">后台管理</h1></div>
  
-<div id="menu" style="background-color:#FFD700;height:200px;width:100px;float:left;">
+<div id="menu" style="background-color:#EEEEEE;height:200px;width:100px;float:left;">
  </div>
  
 <div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">

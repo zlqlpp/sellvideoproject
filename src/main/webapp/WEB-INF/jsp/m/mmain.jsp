@@ -31,7 +31,7 @@ function go(v){
 </script>
 </head>
 <body>
-  	<h3>功能列表</h3>
+  	<h1>功能列表</h1>
  
   	 <a href="/m/mgotopage.do?page=dwnvideo"  class="btn btn-primary">下载视频</a>
   	 <a href="/m/regetvideolist.do"   		  class="btn btn-success">刷新前后台视频列表</a>
