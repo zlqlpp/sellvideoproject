@@ -22,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import redis.clients.jedis.Jedis;
+import rml.RedisUtil;
 import rml.bean.User;
 import rml.bean.Video;
 
@@ -41,7 +43,10 @@ public class MUserController {
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		Logger.getLogger(MUserController.class).info("登录-------");
 		String code = request.getParameter("ucode");
-
+		
+		Jedis jedis = RedisUtil.getJedis();
+		jedis.set("1", "hello");
+		Logger.getLogger(MUserController.class).info("redis："+jedis.get("1"));
 		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
 		
 		//校验输入格式，校验code是否存在
