@@ -220,7 +220,7 @@ public class ManageController {
 		//readCodes(session);
 		
 		Jedis jedis = RedisUtil.getJedis();
-		String str = jedis.get("codeList");
+		String str = jedis.get("codelist");
 		
 		List codelist = new ArrayList();
 		if(StringUtils.isNotBlank(str)){
