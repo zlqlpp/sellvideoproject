@@ -154,6 +154,7 @@ public class MUserController {
 							countflag = false;
 						}else{
 						user.setCount(user.getCount()-1);
+						session.setAttribute("user", user);
 						}
 				 }
 				 codemap2.put(key, user);
