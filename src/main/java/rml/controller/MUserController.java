@@ -110,7 +110,7 @@ public class MUserController {
 		 User u = (User) session.getAttribute("user");
 		 String code =  u.getCode();
 		 
-		 
+		 boolean countflag = true;  //为false时，不能再观看
 		 
 			Jedis jedis = RedisUtil.getJedis();
 			String str = jedis.get("codelist");
@@ -125,10 +125,10 @@ public class MUserController {
 				user =   JSON.parseObject(codelist.get(i).toString(),User.class);
 				if(code.equals(user.getCode())){
 					if(user.getCount()==0){
-						return "index";
-					}
+						countflag = false;
+					}else{
 					user.setCount(user.getCount()-1);
-					
+					}
 					//break;
 				}
 				codelist2.add(user);
@@ -150,15 +150,20 @@ public class MUserController {
 				 key = iterator.next().toString();
 				 user =  JSON.parseObject(codemap.get(key).toString(),User.class);
 				 if(code.equals(user.getCode())){
-					 user.setCount(user.getCount()-1);
-					 
+					 if(user.getCount()==0){
+							countflag = false;
+						}else{
+						user.setCount(user.getCount()-1);
+						}
 				 }
 				 codemap2.put(key, user);
 				 jedis.set("codemap", JSON.toJSONString(codemap2));
 			 }
 	 
 			RedisUtil.returnResource(jedis);
-		 
+		 if(!countflag){
+			 return "index";
+		 }
 		return "openvideo";
 	}
 	
