@@ -41,7 +41,7 @@ function clean(){
   	 <a href="/m/mgotopage.do?page=clsvideo"  class="btn btn-danger">清空视频</a>
   	 <br><br>
   	 <hr/>
-清空视频 <a href="/m/mmain.do">返回列表</a>
+
 <hr>
  
     

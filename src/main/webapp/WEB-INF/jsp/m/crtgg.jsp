@@ -39,12 +39,12 @@ window.onload=function(){
   	 <a href="/m/mgotopage.do?page=clsvideo"  class="btn btn-danger">清空视频</a>
   	 <br><br>
   	 <hr/>
-生成广告页 <a href="/m/mmain.do">返回列表</a>
+
 <hr>
  
   	 <a href="/m/crtgg.do">生成广告</a>
   	 <hr>
-  	 <a href="${t}">点击跳转到广告</a>
+  	 <a href="${t}" target="_blank">点击跳转到广告</a>
    生成广告后直接复制浏览器中的地址即可，有效期5分钟
    
 </body>
