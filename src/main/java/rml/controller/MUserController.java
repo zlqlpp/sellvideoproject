@@ -46,9 +46,9 @@ public class MUserController {
 	
 	@RequestMapping(value="/listvideos")
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
-		Logger.getLogger(MUserController.class).info("登录-------");
+		
 		String code = request.getParameter("ucode");
-		Logger.getLogger(MUserController.class).info("前台传入的观看码为："+code);
+		Logger.getLogger(MUserController.class).info("登录-- 前台传入的观看码为："+code);
 		
 		
 		//从session里读视频 ，没有就读一下目录
@@ -56,6 +56,8 @@ public class MUserController {
 		if(null==videolist){
 			videolist = getVideoListFromTxt(session);
 		}
+		Logger.getLogger(MUserController.class).info("登录--读视频列表，默认存在session中，没有就从文件读。完成：" );
+		
 		
 		Jedis jedis = RedisUtil.getJedis();
 		String str = jedis.get("codemap");
@@ -64,19 +66,21 @@ public class MUserController {
 		if(StringUtils.isNotBlank(str)){
 		    codemap = JSON.parseObject(str,HashMap.class);
 		}
+		Logger.getLogger(MUserController.class).info("登录--从redis中读观看码的codemap<code,user>。完成：" );
+		
 		
 		User user = null;
 		if(code!=null){
 				if(codemap.containsKey(code)){
 					user = JSON.parseObject(codemap.get(code).toString(),User.class)  ;
-					session.setAttribute("user", code);
+					session.setAttribute("user", user);
 				}else{
 					 return "index";
 				}
 					
 		}else if(code==null&&null!=session.getAttribute("user")){
 			user = JSON.parseObject(codemap.get(code).toString(),User.class)  ;
-			session.setAttribute("user", code);
+			session.setAttribute("user", user);
 		}else{
 			 return "index";
 		}
@@ -101,7 +105,9 @@ public class MUserController {
 		
 		//跳到播放页
 		 model.addAttribute("video", videoname);
-		 String code =  (String) session.getAttribute("user");
+		 
+		 User u = (User) session.getAttribute("user");
+		 String code =  u.getCode();
 		 
 		 
 		 
