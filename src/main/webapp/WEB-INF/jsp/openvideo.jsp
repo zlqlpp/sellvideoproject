@@ -26,10 +26,16 @@
 	</script>
 </head>
 <body>
+<h2>观看影片</h2>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="/c/listvideos.do"><h3>返回列表</h3></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">用户：${user.code },剩余观看次数：${user.count }</a>
+<hr>
  <iframe src='/zhibing_mybatis/video/${video }?rel=0' frameborder='0' width='600px' height='400px' allowfullscreen='true'  ></iframe>
 <br>
 <hr>
-<a href="/c/listvideos.do">返回列表</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="/c/listvideos.do"><h3>返回列表</h3></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">用户：${user.code },剩余观看次数：${user.count }</a>
 
 </body>
 </html>
