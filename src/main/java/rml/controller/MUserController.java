@@ -68,14 +68,14 @@ public class MUserController {
 		User user = null;
 		if(code!=null){
 				if(codemap.containsKey(code)){
-					user = (User) codemap.get(code);
+					user = JSON.parseObject(codemap.get(code).toString(),User.class)  ;
 					session.setAttribute("user", code);
 				}else{
 					 return "index";
 				}
 					
 		}else if(code==null&&null!=session.getAttribute("user")){
-			user = (User) codemap.get(code);
+			user = JSON.parseObject(codemap.get(code).toString(),User.class)  ;
 			session.setAttribute("user", code);
 		}else{
 			 return "index";
