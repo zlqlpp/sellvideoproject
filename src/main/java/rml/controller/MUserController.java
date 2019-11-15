@@ -116,6 +116,7 @@ public class MUserController {
 			String str = jedis.get("codelist");
 			
 			List codelist = new ArrayList();
+			List codelist2 = new ArrayList();
 			if(StringUtils.isNotBlank(str)){
 			    codelist = JSON.parseObject(str,ArrayList.class);
 			}
@@ -127,27 +128,33 @@ public class MUserController {
 						return "index";
 					}
 					user.setCount(user.getCount()-1);
-					jedis.set("codelist", JSON.toJSONString(codelist));
-					break;
+					
+					//break;
 				}
+				codelist2.add(user);
+				jedis.set("codelist", JSON.toJSONString(codelist2));
 			}
 			
 			 str = jedis.get("codemap");
 			
 			Map codemap = new HashMap();
+			Map codemap2 = new HashMap();
 			if(StringUtils.isNotBlank(str)){
 			    codemap = JSON.parseObject(str,HashMap.class);
 			}
 			 user = null;
 			 Set set = codemap.keySet();
 			 Iterator iterator = set.iterator();
+			 String key = "";
 			 while(iterator.hasNext()){
-				 user =  JSON.parseObject(codemap.get(iterator.next()).toString(),User.class);
+				 key = iterator.next().toString();
+				 user =  JSON.parseObject(codemap.get(key).toString(),User.class);
 				 if(code.equals(user.getCode())){
 					 user.setCount(user.getCount()-1);
-					 jedis.set("codemap", JSON.toJSONString(codemap));
-						break;
+					 
 				 }
+				 codemap2.put(key, user);
+				 jedis.set("codemap", JSON.toJSONString(codemap2));
 			 }
 	 
 			RedisUtil.returnResource(jedis);
