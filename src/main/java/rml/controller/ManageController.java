@@ -89,9 +89,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/crtgg")
 	public String crtgg(Model model,HttpServletRequest request,HttpSession session) {
-		if(!ifLogin(session)){
-			return "m/mlogin";
-		}
+
 		
 		 Long t = new Date().getTime();
 		 Logger.getLogger(ManageController.class).info("新的的crtgg："+t);
@@ -103,6 +101,9 @@ public class ManageController {
 			 return "m/crtggdetail";
 		 }
 		 
+			if(!ifLogin(session)){
+				return "m/mlogin";
+			}
 		 
 		 Long crtgg = (Long) session.getAttribute("crtgg");
 		 Logger.getLogger(ManageController.class).info("session中的crtgg："+crtgg);
