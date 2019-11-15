@@ -79,7 +79,8 @@ public class MUserController {
 				}
 					
 		}else if(code==null&&null!=session.getAttribute("user")){
-			user = JSON.parseObject(codemap.get(code).toString(),User.class)  ;
+			User tu = (User) session.getAttribute("user");
+			user = JSON.parseObject(codemap.get(tu.getCode()).toString(),User.class)  ;
 			session.setAttribute("user", user);
 		}else{
 			 return "index";
