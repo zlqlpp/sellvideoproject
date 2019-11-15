@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -201,10 +202,12 @@ public class ManageController {
 		Logger.getLogger(ManageController.class).info("创建观看码");
 		
 		String count = request.getParameter("count");
-		Long code = new Date().getTime();
+		Date date = new Date();
+		Long code = date.getTime();
 		User user = new User();
 		user.setCode(code.toString());
 		user.setCount(Integer.parseInt(count));
+		user.setCrtDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
 		
 		Jedis jedis = RedisUtil.getJedis();
 		

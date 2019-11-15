@@ -64,12 +64,16 @@ window.onload=function(){
   	 	<table border="1" width="70%">
  		<tr>
    			<td height="40px" >观看码</td>
+   			<td>快速链接</td>
  			<td  >剩余观看次数</td>
+ 			<td  >创建时间</td>
    		</tr>
    		<c:forEach items="${passwdlist}" var="v">
    		<tr>
    			<td height="40px" >${v.code }</td>
+   			<td><a href="/c/listvideos?ucode=${v.code }" target="_blank">直达</a></td>
  			<td  >${v.count }</td>
+ 			<td  >${v.crtDate }</td>
    		</tr>
    		</c:forEach>
    </table>
