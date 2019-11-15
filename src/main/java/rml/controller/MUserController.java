@@ -120,7 +120,7 @@ public class MUserController {
 			}
 			User user = null;
 			for(int i=0;i<codelist.size();i++){
-				user = (User) codelist.get(i);
+				user =   JSON.parseObject(codelist.get(i).toString(),User.class);
 				if(code.equals(user.getCode())){
 					if(user.getCount()==0){
 						return "index";
@@ -141,7 +141,7 @@ public class MUserController {
 			 Set set = codemap.keySet();
 			 Iterator iterator = set.iterator();
 			 while(iterator.hasNext()){
-				 user = (User) codemap.get(iterator.next());
+				 user =  JSON.parseObject(codemap.get(iterator.next()).toString(),User.class);
 				 if(code.equals(user.getCode())){
 					 user.setCount(user.getCount()-1);
 					 jedis.set("codemap", JSON.toJSONString(codemap));
