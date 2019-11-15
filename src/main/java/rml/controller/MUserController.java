@@ -149,10 +149,7 @@ public class MUserController {
 				 }
 			 }
 	 
-			
 			RedisUtil.returnResource(jedis);
-		 
-		 
 		 
 		return "openvideo";
 	}
