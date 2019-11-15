@@ -67,7 +67,10 @@ public class ManageController {
 	}
 	
 	@RequestMapping(value="/mgotopage")
-	public String mgotopage(Model model,HttpServletRequest request) {
+	public String mgotopage(Model model,HttpServletRequest request,HttpSession session) {
+		if(!ifLogin(session)){
+			return "m/mlogin";
+		}
 		
 		String page = request.getParameter("page");
 		
@@ -86,6 +89,10 @@ public class ManageController {
 	
 	@RequestMapping(value="/crtgg")
 	public String crtgg(Model model,HttpServletRequest request,HttpSession session) {
+		if(!ifLogin(session)){
+			return "m/mlogin";
+		}
+		
 		 Long t = new Date().getTime();
 		 Logger.getLogger(ManageController.class).info("新的的crtgg："+t);
 		 
@@ -110,8 +117,11 @@ public class ManageController {
 		 model.addAttribute("t",request.getRequestURL()+"?t="+crtgg);
 		return "m/crtgg";
 	}
-	@RequestMapping(value="/gotgg")
+/*	@RequestMapping(value="/gotgg")
 	public String gotgg(Model model,HttpServletRequest request,HttpSession session) {
+		if(!ifLogin(session)){
+			return "m/mlogin";
+		}
 		
 		 Long crtgg = (Long) session.getAttribute("crtgg");
 		 
@@ -124,11 +134,12 @@ public class ManageController {
 		 session.setAttribute("crtgg", crtgg);
 		 
 		return "m/crtgg";
-	}
+	}*/
 	
 	@ResponseBody
 	@RequestMapping(value="/down",method = RequestMethod.POST)
 	public Map<String,Object> down(HttpServletRequest request,HttpSession session) {
+		
 		Map<String,Object> retMap = new HashMap<String,Object>();
 		String url = request.getParameter("url");
 		Logger.getLogger(ManageController.class).info("新下载视频的URL："+url);
@@ -145,6 +156,9 @@ public class ManageController {
 	
 	@RequestMapping(value="/regetvideolist")
 	public String regetvideolist(HttpServletRequest request,HttpSession session) {
+		if(!ifLogin(session)){
+			return "m/mlogin";
+		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
 		this.getVideoListFromTxt( session);
@@ -154,6 +168,10 @@ public class ManageController {
 	
 	@RequestMapping(value="/clean")
 	public String clean(HttpServletRequest request,HttpSession session) {
+		if(!ifLogin(session)){
+			return "m/mlogin";
+		}
+		
 		Logger.getLogger(ManageController.class).info("清空视频列表");
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
@@ -175,6 +193,10 @@ public class ManageController {
 	
 	@RequestMapping(value="/crtpasswd")
 	public String crtpasswd(Model model,HttpServletRequest request,HttpSession session) {
+		if(!ifLogin(session)){
+			return "m/mlogin";
+		}
+		
 		Logger.getLogger(ManageController.class).info("创建观看码");
 		
 		String count = request.getParameter("count");
@@ -216,6 +238,10 @@ public class ManageController {
 	
 	@RequestMapping(value="/lispasswd")
 	public String lispasswd(Model model,HttpServletRequest request,HttpSession session) {
+		if(!ifLogin(session)){
+			return "m/mlogin";
+		}
+		
 		Logger.getLogger(ManageController.class).info("列出所有观看码");
 		//readCodes(session);
 		
