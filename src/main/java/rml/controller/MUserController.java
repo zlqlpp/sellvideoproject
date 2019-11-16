@@ -52,11 +52,12 @@ public class MUserController {
 		
 		
 		//从session里读视频 ，没有就读一下目录
-		List videolist =   (List) session.getAttribute("videolist");
+		/*List videolist =    (List) session.getAttribute("videolist");
 		if(null==videolist){
 			videolist = getVideoListFromTxt(session);
-		}
-		Logger.getLogger(MUserController.class).info("登录--读视频列表，默认存在session中，没有就从文件读。完成：" );
+		}*/
+		List videolist = getVideoListFromTxt(session);
+		Logger.getLogger(MUserController.class).info("登录--读视频列表， 从文件读。完成：" );
 		
 		
 		Jedis jedis = RedisUtil.getJedis();
@@ -66,13 +67,12 @@ public class MUserController {
 		if(StringUtils.isNotBlank(str)){
 		    codemap = JSON.parseObject(str,HashMap.class);
 		}
-		Logger.getLogger(MUserController.class).info("登录--从redis中读观看码的codemap<code,user>。完成：" );
-		
 		
 		User user = null;
 		if(code!=null){
 				if(codemap.containsKey(code)){
 					user = JSON.parseObject(codemap.get(code).toString(),User.class)  ;
+					Logger.getLogger(MUserController.class).info("登录--redis的codemap中存在此观看码" );
 					session.setAttribute("user", user);
 				}else{
 					 return "index";
@@ -252,7 +252,7 @@ public class MUserController {
             }
         }
         
-        session.setAttribute("videolist", videolist);
+        //session.setAttribute("videolist", videolist);
         
         return videolist;
         
