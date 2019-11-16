@@ -32,7 +32,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">用户：${user.code },剩余观看次数：${user.count }</a>
 <hr>
  <iframe src='/zhibing_mybatis/video/${video }' frameborder='0' width='600px' height='400px' allowfullscreen='true'  ></iframe>
- 
+ <video src='/zhibing_mybatis/video/${video }' controls='controls' width='600px' height='400px'></video>
 <br>
 <hr>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="/c/listvideos.do"><h3>返回列表</h3></a>
