@@ -10,9 +10,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
 <title>videoList</title>
 <script type="text/javascript">
 function go(v){
@@ -32,14 +29,15 @@ function go(v){
   	 </form>
   	 
   	 
- 
+	<table border="1" width="70%">
  
    		<c:forEach items="${videolist}" var="v">
+   		<tr>
+   			<td height="70px"  ><a  onclick="go('${v.vname}')" href="#">${v.vtitle }</a></td>
  
-   			<div height="40px"   onclick="go('${v.vname}')">${v.vtitle }</div>
- 
+   		</tr>
    		</c:forEach>
- 
+   </table>
    
 </body>
 </html>
