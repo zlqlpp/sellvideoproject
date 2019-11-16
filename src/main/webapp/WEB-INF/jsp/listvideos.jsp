@@ -29,15 +29,14 @@ function go(v){
   	 </form>
   	 
   	 
-	<table border="1" width="70%">
+ 
  
    		<c:forEach items="${videolist}" var="v">
-   		<tr>
-   			<td height="40px"   onclick="go('${v.vname}')">${v.vtitle }</a></td>
  
-   		</tr>
+   			<div height="40px"   onclick="go('${v.vname}')">${v.vtitle }</div>
+ 
    		</c:forEach>
-   </table>
+ 
    
 </body>
 </html>
