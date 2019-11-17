@@ -19,6 +19,19 @@ function go(v){
 	form.submit();
 	 
 }
+
+window.onload=function(){
+ 
+		var ua = navigator.userAgent.toLowerCase();
+		if(ua.match(/MicroMessenger/i)=="micromessenger") {
+			 alert('请用手机浏览器打开');
+	 	} else {
+			 
+		}
+ 
+
+		   
+	}
 </script>
 </head>
 <body>

@@ -77,9 +77,9 @@ public class ManageController {
 		
 		if("dwnvideo".equals(page)){
 			return "m/dwnvideo";
-		}else if("crtpasswd".equals(page)){
+		}/*else if("crtpasswd".equals(page)){
 			return "m/crtpasswd";
-		}else if("crtgg".equals(page)){
+		}*/else if("crtgg".equals(page)){
 			return "m/crtgg";
 		} else if("clsvideo".equals(page)){
 			return "m/clsvideo";

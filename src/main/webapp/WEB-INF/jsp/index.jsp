@@ -20,7 +20,7 @@
     	<!-- 欢迎 <a href="/m/mlogin.do">转后台</a><br> -->
     	<hr>
     
-    <form action="/c/listvideos.do" method="post" >
+    <form action="/c/listvideos.do" method="get" >
     	<input type="text" name="ucode" id="ucode"/>
     	<input type="submit" value="提交"/>
     </form>
