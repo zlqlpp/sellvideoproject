@@ -24,17 +24,18 @@ window.onload=function(){
  
 		var ua = navigator.userAgent.toLowerCase();
 		if(ua.match(/MicroMessenger/i)=="micromessenger") {
-			 alert('请用手机浏览器打开');
-	 	} else {
-			 
-		}
- 
-
-		   
+			 alert('请用手机浏览器打开链接');
+			 document.getElementById('msg').style='block';
+	 	} else{
+	 		document.getElementById('content').style='block';
+	 	}
+    
 	}
 </script>
 </head>
 <body>
+<div style="display:none" id="msg"><h1>请使用手机浏览器打开链接</h1></div>
+<div style="display:none" id="content">
   	<h3>列表</h3>  <a href="#">用户：${user.code },剩余观看次数：${user.count }</a>
   	<br/><br/>
   	 <form action="/c/openvideo.do" method="get"  id="f">
@@ -51,6 +52,6 @@ window.onload=function(){
    		</tr>
    		</c:forEach>
    </table>
-   
+</div>   
 </body>
 </html>
