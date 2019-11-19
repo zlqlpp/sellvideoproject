@@ -159,14 +159,14 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
 <!--//forumdisplay_list template start-->
    <div class="tl">
     	<div class="bm">
-        	<div class="bm_h">天天看(客服QQ)  </div>
+        	<div class="bm_h">天天看(客服vx:ttktiantiankan)  </div>
         	<c:forEach items="${videolist}" var="v">
                             	       <div class="bm_c">
                                           <a href="#"  style="font-weight: bold;color: #8F2A90" onclick="go('${v.vname}')">
                                               ${v.vtitle }</a>
                                           <br />
 										  <span class="xg1">
-                                              <a href="home.php?mod=space&amp;uid=1&mobile=yes">admin</a>
+                                              <a href="#">admin</a>
                                           </span>
                                        </div>
            </c:forEach>
