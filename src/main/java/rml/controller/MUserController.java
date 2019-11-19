@@ -233,6 +233,7 @@ public class MUserController {
             	v.setVtitle(tempString.split("--------")[0]);
             	v.setVid(tempString.split("--------")[1]);
             	v.setVname((null==map.get(tempString.split("--------")[1]))?"":map.get(tempString.split("--------")[1]).toString());
+            	v.setVlenght(tempString.split("--------")[2]);
             	Logger.getLogger(MUserController.class).info("读视频列表："+v.getVid());
             	Logger.getLogger(MUserController.class).info("读视频列表："+v.getVtitle());
             	Logger.getLogger(MUserController.class).info("读视频列表："+v.getVname());

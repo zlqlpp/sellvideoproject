@@ -326,6 +326,7 @@ public class ManageController {
             	v.setVtitle(tempString.split("--------")[0]);
             	v.setVid(tempString.split("--------")[1]);
             	v.setVname((null==map.get(tempString.split("--------")[1]))?"":map.get(tempString.split("--------")[1]).toString());
+            	v.setVlenght((null==map.get(tempString.split("--------")[2]))?"":map.get(tempString.split("--------")[2]).toString());
             	videolist.add(v);
                  
                 line++;
@@ -479,16 +480,31 @@ class MusicImplements implements Runnable{
 		}
 		String name = processList.get(0).toString();
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频名字："+ processList.get(0).toString());  
-		
+		//--get-duration
+        processList = new ArrayList<String>();
+		try {
+			Process p = Runtime.getRuntime().exec("youtube-dl --get-duration "+durl);
+			p.waitFor();
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = "";
+			while ((line = input.readLine()) != null) {
+				processList.add(line);
+			}
+			input.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String longth = processList.get(0).toString();
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频时长："+ processList.get(0).toString()); 
 		
     	try {
          	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(id)s.%(ext)s "+durl);
-         	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","echo '"+name+"--------"+id+"' >>"+ p.getProperty("videoNamePath")}) ;
+         	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","echo '"+name+"--------"+id+"--------"+longth+"' >>"+ p.getProperty("videoNamePath")}) ;
          	pro.waitFor();
          } catch ( Exception e) {
              e.printStackTrace();
          }
-    	Logger.getLogger(MusicImplements.class).info("视频下载---视频写入文件："+ name+"--------"+id); 
+    	Logger.getLogger(MusicImplements.class).info("视频下载---视频写入文件："+ name+"--------"+id+"--------"+longth); 
     	//--get-duration  获取时长
     }  
 } 
