@@ -326,7 +326,7 @@ public class ManageController {
             	v.setVtitle(tempString.split("--------")[0]);
             	v.setVid(tempString.split("--------")[1]);
             	v.setVname((null==map.get(tempString.split("--------")[1]))?"":map.get(tempString.split("--------")[1]).toString());
-            	v.setVlenght((null==map.get(tempString.split("--------")[2]))?"":map.get(tempString.split("--------")[2]).toString());
+            	v.setVlenght(tempString.split("--------")[2]);
             	videolist.add(v);
                  
                 line++;
