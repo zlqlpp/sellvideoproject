@@ -1,22 +1,24 @@
 1.yum install jdk
+
+	yum install -y java;
+	yum install -y maven;
 2.apache-tomcat-7.0.96  解压缩版
+	cd /;
+	wget http://ftp.wayne.edu/apache/tomcat/tomcat-7/v7.0.96/bin/apache-tomcat-7.0.96.tar.gz;
+	tar -xzf apache-tomcat-7.0.96.tar.gz;
+
 3.centos7  install  redis 5
-   https://www.cnblogs.com/autohome7390/p/6433956.html
-   https://www.cnblogs.com/linjiqin/p/7965783.html
-   https://blog.csdn.net/CrazyLai1996/article/details/76472856
-4.
+   #https://www.cnblogs.com/autohome7390/p/6433956.html
+   #https://www.cnblogs.com/linjiqin/p/7965783.html
+   #https://blog.csdn.net/CrazyLai1996/article/details/76472856
+ 
+	yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm;
+	yum --enablerepo=remi install redis -y;
+	service redis start;
 
-yum install -y java
-yum install -y maven
-
-wget http://ftp.wayne.edu/apache/tomcat/tomcat-7/v7.0.96/bin/apache-tomcat-7.0.96.tar.gz
-
-tar -xzf apache-tomcat-7.0.96.tar.gz
-
-yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-yum --enablerepo=remi install redis
-service redis start
-
+mkdir /root/git_zlq/;
+cd /root/git_zlq/;
+git clone https://github.com/zlqlpp/sellvideoproject.git;
 
 ######## ~/.sysconfig
 alias go='cd /root/git_zlq/sellvideoproject;                                                         \
@@ -36,7 +38,7 @@ touch /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/passwd.txt;\
 chmod 777 /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/passwd.txt;\
 touch /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/video.txt;\
 chmod 777 /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/video.txt;\
-cp /root/apache-tomcat-7.0.96/webapps/f.mp4  /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/video  '
+vlog; '
 
 alias cdapp='cd /root/apache-tomcat-7.0.96/webapps'
 alias cdlog='cd /root/apache-tomcat-7.0.96/logs'
@@ -48,8 +50,7 @@ alias welcome='clear;source ~/.bash_profile'
 source /root/.sysconfig
 
 
-mkdir /root/git_zlq/
-git clone https://github.com/zlqlpp/sellvideoproject.git
+ source ~/.bash_profile
 
 
 
