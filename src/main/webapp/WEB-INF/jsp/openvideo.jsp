@@ -160,7 +160,7 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
         	<div class="bm_h">天天看(客服vx:ttktiantiankan)  </div>
 			
 			<a href="/c/listvideos.do"><h3>返回列表</h3></a>
-        	<iframe src='/zhibing_mybatis/video/${video }' frameborder='0' width='600px' height='400px' allowfullscreen='true'  ></iframe>
+        	<iframe src='/zhibing_mybatis/video/${video }' frameborder='0' width='auto' height='auto' allowfullscreen='true'  ></iframe>
        </div>
   </div>
  
