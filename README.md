@@ -54,7 +54,9 @@ source /root/.sysconfig
 
 
 
-
+mkdir /root/youtubedl;
+mkdir /root/youtubedl/video;
+touch /root/youtubedl/video.txt;
 
 
 修改tomcat  端口80 

@@ -85,7 +85,7 @@ public class MUserController {
 		}else{
 			 return "index";
 		}
-		
+		      
 		RedisUtil.returnResource(jedis);
 		
 		model.addAttribute("videolist",videolist);
