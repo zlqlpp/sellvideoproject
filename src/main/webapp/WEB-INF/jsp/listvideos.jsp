@@ -30,7 +30,7 @@ window.onload=function(){
 	 	} else{
 	 		document.getElementById('wb').value='web';
 	 	}
-    
+    alert(document.getElementById('wb').value);
 	}
 </script>
  

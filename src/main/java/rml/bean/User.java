@@ -3,7 +3,7 @@ package rml.bean;
 public class User {
 
 	private String code; //观看码
-	private int count;   //观看次数
+	private Double count;   //观看次数
 	private String crtDate;
 	public String getCrtDate() {
 		return crtDate;
@@ -17,10 +17,10 @@ public class User {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public int getCount() {
+	public Double getCount() {
 		return count;
 	}
-	public void setCount(int count) {
+	public void setCount(Double count) {
 		this.count = count;
 	}
 	

@@ -104,6 +104,7 @@ public class MUserController {
 			return "index";
 		}
 		
+		String wb = request.getParameter("wb");
 		
 		//跳到播放页
 		 model.addAttribute("video", videoname);
@@ -128,7 +129,11 @@ public class MUserController {
 					if(user.getCount()==0){
 						countflag = false;
 					}else{
-					user.setCount(user.getCount()-1);
+						if(wb.equals("vx")){
+							user.setCount(user.getCount()-0.5);
+						}else{
+							user.setCount(user.getCount()-1);
+						}
 					}
 					//break;
 				}
@@ -154,7 +159,11 @@ public class MUserController {
 					 if(user.getCount()==0){
 							countflag = false;
 						}else{
-						user.setCount(user.getCount()-1);
+							if(wb.equals("vx")){
+								user.setCount(user.getCount()-0.5);
+							}else{
+								user.setCount(user.getCount()-1);
+							}
 						session.setAttribute("user", user);
 						}
 				 }
