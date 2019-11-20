@@ -60,3 +60,7 @@ source /root/.sysconfig
 修改tomcat  端口80 
 host 修改成 域名
 <Context path="/" docBase="/root/apache-tomcat-7.0.96/webapps/zhibing_mybatis"  reloadable="true" />
+<Context path="/video" docBase="/root/youtubedl/video"  reloadable="true" />
+
+
+
