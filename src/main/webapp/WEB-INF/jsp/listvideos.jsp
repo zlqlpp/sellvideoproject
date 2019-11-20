@@ -21,13 +21,14 @@ function go(v){
 }
 
 window.onload=function(){
- 
+	document.getElementById('content').style='block';
 		var ua = navigator.userAgent.toLowerCase();
 		if(ua.match(/MicroMessenger/i)=="micromessenger") {
 			 alert('请用手机浏览器打开链接');
-			 document.getElementById('msg').style='block';
+			 //document.getElementById('msg').style='block';
+			 document.getElementById('wb').value='vx';
 	 	} else{
-	 		document.getElementById('content').style='block';
+	 		document.getElementById('wb').value='web';
 	 	}
     
 	}
@@ -146,7 +147,7 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
 </style>
 </head>
 <body>
-<div style="display:none" id="msg"><h1>请使用手机浏览器打开链接</h1></div>
+<!-- <div style="display:none" id="msg"><h1>请使用手机浏览器打开链接</h1></div> -->
 
 <div class="wp" style="display:none" id="content">
 
@@ -155,6 +156,7 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
 <div class="tz pbn"><a href="#" >用户：${user.code },剩余观看次数：${user.count }</a></div>
   	 <form action="/c/openvideo.do" method="get"  id="f">
   	 	<input type="hidden" id="video" name="video" />
+  	 	<input type="hidden" id="wb" name="wb" />
   	 </form>
 <!--//forumdisplay_list template start-->
    <div class="tl">
