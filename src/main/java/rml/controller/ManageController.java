@@ -206,7 +206,7 @@ public class ManageController {
 		Long code = date.getTime();
 		User user = new User();
 		user.setCode(code.toString());
-		user.setCount(Integer.parseInt(count));
+		user.setCount(Double.parseDouble(count));
 		user.setCrtDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
 		
 		Jedis jedis = RedisUtil.getJedis();
