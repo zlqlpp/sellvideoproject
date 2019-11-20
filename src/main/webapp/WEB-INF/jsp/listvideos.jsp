@@ -24,13 +24,13 @@ window.onload=function(){
 	document.getElementById('content').style='block';
 		var ua = navigator.userAgent.toLowerCase();
 		if(ua.match(/MicroMessenger/i)=="micromessenger") {
-			 alert('请用手机浏览器打开链接');
+			 //alert('请用手机浏览器打开链接');
 			 //document.getElementById('msg').style='block';
 			 document.getElementById('wb').value='vx';
 	 	} else{
 	 		document.getElementById('wb').value='web';
 	 	}
-    alert(document.getElementById('wb').value);
+    //alert(document.getElementById('wb').value);
 	}
 </script>
  

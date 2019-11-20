@@ -22,13 +22,13 @@ function go(v){
 
 window.onload=function(){
  
-		var ua = navigator.userAgent.toLowerCase();
+/* 		var ua = navigator.userAgent.toLowerCase();
 		if(ua.match(/MicroMessenger/i)=="micromessenger") {
 			 alert('请用手机浏览器打开链接');
 			 document.getElementById('msg').style='block';
 	 	} else{
 	 		document.getElementById('content').style='block';
-	 	}
+	 	} */
     
 	}
 </script>
@@ -146,9 +146,9 @@ body {background: #FFF; background-image:none; line-height: 130%; font-size: 10p
 </style>
 </head>
 <body>
-<div style="display:none" id="msg"><h1>请使用手机浏览器打开链接</h1></div>
+<div style="display:block" id="msg"><h1>请使用手机浏览器打开链接</h1></div>
 
-<div class="wp" style="display:none" id="content">
+<div class="wp" style="display:block" id="content">
 
 <div class="pd2"><a href="#" title="客服">客服</a></div>
 <div class="box"><a href="#" title="招代理">招代理</a> </div>
