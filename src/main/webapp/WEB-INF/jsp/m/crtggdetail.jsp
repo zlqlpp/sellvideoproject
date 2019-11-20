@@ -154,7 +154,7 @@ alert('观看请加客服vx:ttktiantiankan');
         		<c:forEach items="${videolist}" var="v">
                             	       <div class="bm_c">
                                            <a href="#"  style="font-weight: bold;color: #8F2A90" onclick="go()" >
-                                                 ${v.vtitle }  </a>
+                                                 ${v.vtitle } ---(时长:${v.vlenght }) </a>
                                            <br />
 											<span class="xg1">
                                                <a href="#">admin</a>
