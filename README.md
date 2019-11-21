@@ -33,11 +33,6 @@ rm -rf /root/apache-tomcat-7.0.96/work/*;                                       
 rm -rf /root/apache-tomcat-7.0.96/temp/*;                                                            \
 rm -rf /var/lib/tomcat/webapps/*;                                                                    \
 /root/apache-tomcat-7.0.96/bin/startup.sh;sleep 15; \
-mkdir /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/video;\
-touch /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/passwd.txt;\
-chmod 777 /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/passwd.txt;\
-touch /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/video.txt;\
-chmod 777 /root/apache-tomcat-7.0.96/webapps/zhibing_mybatis/video.txt;\
 vlog; '
 
 alias cdapp='cd /root/apache-tomcat-7.0.96/webapps'
@@ -56,7 +51,6 @@ source /root/.sysconfig
 
 mkdir /root/youtubedl;
 mkdir /root/youtubedl/video;
-touch /root/youtubedl/video.txt;
 
 
 修改tomcat  端口80 
