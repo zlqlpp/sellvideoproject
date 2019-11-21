@@ -5,16 +5,44 @@
 <head>
  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
 <link rel="stylesheet" type="text/css" href="/css/css.css">
  
+
+
+
+ 
+<script id="savepage-shadowloader" type="application/javascript">
+  "use strict"
+  window.addEventListener("DOMContentLoaded",
+  function(event)
+  {
+    savepage_ShadowLoader(5);
+  },false);
+  function savepage_ShadowLoader(c){createShadowDOMs(0,document.documentElement);function createShadowDOMs(a,b){var i;if(b.localName=="iframe"||b.localName=="frame"){if(a<c){try{if(b.contentDocument.documentElement!=null){createShadowDOMs(a+1,b.contentDocument.documentElement)}}catch(e){}}}else{if(b.children.length>=1&&b.children[0].localName=="template"&&b.children[0].hasAttribute("data-savepage-shadowroot")){b.attachShadow({mode:"open"}).appendChild(b.children[0].content);b.removeChild(b.children[0]);for(i=0;i<b.shadowRoot.children.length;i++)if(b.shadowRoot.children[i]!=null)createShadowDOMs(a,b.shadowRoot.children[i])}for(i=0;i<b.children.length;i++)if(b.children[i]!=null)createShadowDOMs(a,b.children[i])}}}
+</script>
+ 
+<meta name="savepage-title" content="">
+ 
+<meta name="savepage-date" content="Thu Nov 21 2019 21:16:06 GMT+0800 (中国标准时间)">
+<meta name="savepage-state" content="Standard Items; Retained cross-origin frames; Removed unsaved URLs; Max frame depth = 5; Max resource size = 50MB; Max resource time = 10s;">
+<meta name="savepage-version" content="16.2">
+<meta name="savepage-comments" content="">
   </head>
 <body>
 
 <div style="padding: 0px 3px 3px;">
 
 
+
+
+
 <div id="gdt_area" style="margin-left:3px;">
 <div style="font-size:16px;">
+<!--<div style="margin: 0 1px 12px;text-align: center;line-height: 12px;"><span style="position: relative;top: 10px;background: #fff;color: #CD0000;font-size: 17px;padding: 0 10px">💦更多精彩咑裳观看💦</span></div>-->
 <div style=" background: #fff">
 <div>
 	<table width="100%" height="100%" style="background-color:#333333;">
@@ -24,88 +52,88 @@
 <ul id="ca_bd">
 		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-	<li class="ca_one" data-curr="1"  data-ca_type="0"><a>全部</a></li>
+	<li class="ca_one" data-curr="1" ;="" data-ca_type="0"><a>全部</a></li>
 
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="1"><a>帼铲</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="1"><a>帼铲</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="2"><a>鈤韩</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="2"><a>鈤韩</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="3"><a>欧美</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="3"><a>欧美</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="4"><a>动物</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="4"><a>动物</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="5"><a>呦呦</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="5"><a>呦呦</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="6"><a>动漫</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="6"><a>动漫</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="7"><a>乱抡</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="7"><a>乱抡</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="8"><a>强健</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="8"><a>强健</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="9"><a>另类</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="9"><a>另类</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="10"><a>丝袜</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="10"><a>丝袜</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="11"><a>魄处</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="11"><a>魄处</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="12"><a>群茭</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="12"><a>群茭</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="13"><a>朲凄</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="13"><a>朲凄</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="14"><a>直播</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="14"><a>直播</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="15"><a>三极</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="15"><a>三极</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="16"><a>野戦</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="16"><a>野戦</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="17"><a>自蔚</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="17"><a>自蔚</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="18"><a>巨汝</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="18"><a>巨汝</a></li>
 		</ul>
   	  		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">
-		<li class="ca_one" data-curr="1"  data-ca_type="19"><a>萝利</a></li>
+		<li class="ca_one" data-curr="1" ;="" data-ca_type="19"><a>萝利</a></li>
 		</ul>
   	  	
   		<nav class="navbar-default navbar-static-side" role="navigation">
 							<ul class="nav nav-second-level">	
- <li class="ca_one" data-curr="1"  data-ca_type="20">
+ <li class="ca_one" data-curr="1" ;="" data-ca_type="20">
  	<a><font color="#FFFF00">已购</font></a></li>
 </ul>
 
