@@ -32,7 +32,7 @@ cp /root/git_zlq/sellvideoproject/target/zhibing_mybatis.war /root/apache-tomcat
 rm -rf /root/apache-tomcat-7.0.96/work/*;                                                            \
 rm -rf /root/apache-tomcat-7.0.96/temp/*;                                                            \
 rm -rf /var/lib/tomcat/webapps/*;                                                                    \
-/root/apache-tomcat-7.0.96/bin/startup.sh;sleep 15; \
+/root/apache-tomcat-7.0.96/bin/startup.sh; \
 vlog; '
 
 alias cdapp='cd /root/apache-tomcat-7.0.96/webapps'

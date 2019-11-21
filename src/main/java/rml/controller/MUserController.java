@@ -44,6 +44,11 @@ public class MUserController {
 		
 		return "index";
 	}
+	@RequestMapping(value="/t")
+	public String t(HttpServletRequest request) {
+		
+		return "t";
+	}
 	
 	@RequestMapping(value="/listvideos")
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
