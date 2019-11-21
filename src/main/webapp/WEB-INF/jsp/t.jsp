@@ -13,24 +13,7 @@
  
 
 
-
  
-<script id="savepage-shadowloader" type="application/javascript">
-  "use strict"
-  window.addEventListener("DOMContentLoaded",
-  function(event)
-  {
-    savepage_ShadowLoader(5);
-  },false);
-  function savepage_ShadowLoader(c){createShadowDOMs(0,document.documentElement);function createShadowDOMs(a,b){var i;if(b.localName=="iframe"||b.localName=="frame"){if(a<c){try{if(b.contentDocument.documentElement!=null){createShadowDOMs(a+1,b.contentDocument.documentElement)}}catch(e){}}}else{if(b.children.length>=1&&b.children[0].localName=="template"&&b.children[0].hasAttribute("data-savepage-shadowroot")){b.attachShadow({mode:"open"}).appendChild(b.children[0].content);b.removeChild(b.children[0]);for(i=0;i<b.shadowRoot.children.length;i++)if(b.shadowRoot.children[i]!=null)createShadowDOMs(a,b.shadowRoot.children[i])}for(i=0;i<b.children.length;i++)if(b.children[i]!=null)createShadowDOMs(a,b.children[i])}}}
-</script>
- 
-<meta name="savepage-title" content="">
- 
-<meta name="savepage-date" content="Thu Nov 21 2019 21:16:06 GMT+0800 (中国标准时间)">
-<meta name="savepage-state" content="Standard Items; Retained cross-origin frames; Removed unsaved URLs; Max frame depth = 5; Max resource size = 50MB; Max resource time = 10s;">
-<meta name="savepage-version" content="16.2">
-<meta name="savepage-comments" content="">
   </head>
 <body>
 
@@ -42,8 +25,7 @@
 
 <div id="gdt_area" style="margin-left:3px;">
 <div style="font-size:16px;">
-<!--<div style="margin: 0 1px 12px;text-align: center;line-height: 12px;"><span style="position: relative;top: 10px;background: #fff;color: #CD0000;font-size: 17px;padding: 0 10px">💦更多精彩咑裳观看💦</span></div>-->
-<div style=" background: #fff">
+ <div style=" background: #fff">
 <div>
 	<table width="100%" height="100%" style="background-color:#333333;">
 		<tbody><tr><td style="text-align:right;">
