@@ -147,7 +147,8 @@ public class ManageController {
 		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		Util.getVideoListFromTxt( session);
+		
+		session.setAttribute("videolist", Util.getVideoListFromTxt( session));
 		
 		return "m/mmain";  
 	}
