@@ -6,68 +6,44 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="stylesheet" type="text/css" href="/css/css.css">
-
-
-
-
 </head>
 <body>
 
 	<div style="padding: 0px 3px 3px;">
-
-
-
-
-
 		<div id="gdt_area" style="margin-left: 3px;">
 			<div style="font-size: 16px;">
 				<div style="background: #fff">
 					<div>
+					
 						<table width="100%" height="100%"
 							style="background-color: #333333;">
 							<tbody>
 								<tr>
 									<td style="text-align: right;">
-
-
-
-
-
-
 										<ul class="nav nav-second-level">
-											<li class="ca_one" data-curr="1" ;="" data-ca_type="1"><a>帼铲</a></li>
+											<li class="ca_one" data-curr="1"  data-ca_type="1"><a>帼铲</a></li>
 										</ul>
 
 										<ul class="nav nav-second-level">
-											<li class="ca_one" data-curr="1" ;="" data-ca_type="2"><a>鈤韩</a></li>
+											<li class="ca_one" data-curr="1"  data-ca_type="2"><a>鈤韩</a></li>
 										</ul>
-
-
-
-
 									</td>
 								</tr>
 							</tbody>
 						</table>
+						
+						
 						<div style="clear: both"></div>
-
 						<div class="box">
 							<ul class="list" id="article_list">
-
-
-								<li><a
-									href="/index/index/shipindo.html?code=599f2065abbeb365d35ece09df90d6cd|FKuF3z83WE">
+							
+								<li><a href="">
 										<div class="list_img">
-											<img
-												data-savepage-src="http://whcofund.com/20190525/SrW6oma1/1.jpg"
-												src="" onerror="this.src='/public/moren.jpg'" alt="">
+											<img data-savepage-src=""
+												src="" onerror="" alt="">
 										</div>
 										<div class="list_info">
 											<div>
@@ -79,12 +55,12 @@
 											</div>
 										</div>
 								</a></li>
-								<li><a
-									href="/index/index/shipindo.html?code=1d6902b54d76ecb61d189b5a25b4cffb|FKuF3z83WE">
+								
+								<li><a href=" ">
 										<div class="list_img">
 											<img
-												data-savepage-src="http://whcofund.com/20190827/6fMOuQC6/1.jpg"
-												src="" onerror="this.src='/public/moren.jpg'" alt="">
+												data-savepage-src=" "
+												src="" onerror=" " alt="">
 										</div>
 										<div class="list_info">
 											<div>
@@ -96,17 +72,13 @@
 											</div>
 										</div>
 								</a></li>
+								
 							</ul>
 
 						</div>
-
-
-
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </body>
