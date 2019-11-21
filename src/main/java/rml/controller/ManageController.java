@@ -37,6 +37,7 @@ import com.alibaba.fastjson.JSON;
 
 import redis.clients.jedis.Jedis;
 import rml.RedisUtil;
+import rml.Util;
 import rml.bean.User;
 import rml.bean.Video;
 
@@ -57,7 +58,7 @@ public class ManageController {
 	public String listvideos(Model model,HttpServletRequest request,HttpSession session) {
 		
 		String code = request.getParameter("passwd");
-		if(ifLogin(session)){
+		if(Util.ifMLogin(session)){
 			return "m/mmain";
 		}else if(null!=code&&"1234qwer".equals(code)){
 			session.setAttribute("muser", code);
@@ -69,7 +70,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/mgotopage")
 	public String mgotopage(Model model,HttpServletRequest request,HttpSession session) {
-		if(!ifLogin(session)){
+		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
@@ -98,11 +99,11 @@ public class ManageController {
 		 String reqeustT = request.getParameter("t");
 		 if(null!=reqeustT&&t-Long.parseLong(reqeustT)<300000){
 			 
-			 model.addAttribute("videolist",getVideoListFromTxt(session));
+			 model.addAttribute("videolist",Util.getVideoListFromTxt(session));
 			 return "m/crtggdetail";
 		 }
 		 
-			if(!ifLogin(session)){
+			if(!Util.ifMLogin(session)){
 				return "m/mlogin";
 			}
 		 
@@ -119,24 +120,7 @@ public class ManageController {
 		 model.addAttribute("t",request.getRequestURL()+"?t="+crtgg);
 		return "m/crtgg";
 	}
-/*	@RequestMapping(value="/gotgg")
-	public String gotgg(Model model,HttpServletRequest request,HttpSession session) {
-		if(!ifLogin(session)){
-			return "m/mlogin";
-		}
-		
-		 Long crtgg = (Long) session.getAttribute("crtgg");
-		 
-		 Long t = new Date().getTime();
-		 
-		 if(null==crtgg||(t-crtgg)>300000) {
-			 crtgg=t;
-			 
-		 } 
-		 session.setAttribute("crtgg", crtgg);
-		 
-		return "m/crtgg";
-	}*/
+
 	
 	@ResponseBody
 	@RequestMapping(value="/down",method = RequestMethod.POST)
@@ -147,7 +131,7 @@ public class ManageController {
 		Logger.getLogger(ManageController.class).info("新下载视频的URL："+url);
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
-			prop = this.getProp(session);
+			prop = Util.getProp(session);
 		}
 		Thread thread = new Thread(new MusicImplements(url,prop));
 		thread.start();
@@ -158,26 +142,26 @@ public class ManageController {
 	
 	@RequestMapping(value="/regetvideolist")
 	public String regetvideolist(HttpServletRequest request,HttpSession session) {
-		if(!ifLogin(session)){
+		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
 		Logger.getLogger(ManageController.class).info("刷新视频列表");
-		this.getVideoListFromTxt( session);
+		Util.getVideoListFromTxt( session);
 		
 		return "m/mmain";  
 	}
 	
 	@RequestMapping(value="/clean")
 	public String clean(HttpServletRequest request,HttpSession session) {
-		if(!ifLogin(session)){
+		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
 		Logger.getLogger(ManageController.class).info("清空视频列表");
 		Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
-			prop = getProp(session);
+			prop = Util.getProp(session);
 		}
 		File file = new File(prop.getProperty("videoPath"));
 		
@@ -195,7 +179,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/crtpasswd")
 	public String crtpasswd(Model model,HttpServletRequest request,HttpSession session) {
-		if(!ifLogin(session)){
+		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
@@ -242,7 +226,7 @@ public class ManageController {
 	
 	@RequestMapping(value="/lispasswd")
 	public String lispasswd(Model model,HttpServletRequest request,HttpSession session) {
-		if(!ifLogin(session)){
+		if(!Util.ifMLogin(session)){
 			return "m/mlogin";
 		}
 		
@@ -264,13 +248,8 @@ public class ManageController {
 	}
 	
 	//---------------------------------------工具方法-------------------------
-	private boolean ifLogin(HttpSession session){
-		if(null!=session.getAttribute("muser")){
-			return true;
-		}
-		return false;
-	}
-	private Map getVideoListTmp(HttpSession session){
+
+/*	private Map getVideoListTmp(HttpSession session){
    	 
     	Properties prop = (Properties) session.getAttribute("prop");
 		if(prop==null) {
@@ -425,7 +404,7 @@ public class ManageController {
         
         return prop;
         
-    }
+    }*/
 }
 
 
@@ -509,7 +488,7 @@ class MusicImplements implements Runnable{
     }  
 } 
 
-class WritePasswd implements Runnable{  
+/*class WritePasswd implements Runnable{  
 	private String passwd = "";
 	private Properties p;
 	public WritePasswd(String passwd,Properties p) {
@@ -527,7 +506,7 @@ class WritePasswd implements Runnable{
          }
           
     }  
-} 
+} */
 
 class CleanVideo implements Runnable{  
 	private Properties p;
