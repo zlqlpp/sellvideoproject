@@ -469,6 +469,7 @@ class MusicImplements implements Runnable{
 		String length = processList.get(0).toString();
 		Logger.getLogger(MusicImplements.class).info("视频下载---视频时长："+ processList.get(0).toString()); 
 		
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...进行中..." );
         try {
         	//Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"-%(title)s.%(ext)s "+durl);
         	Process pro = Runtime.getRuntime().exec("youtube-dl -o "+p.getProperty("videoPath")+"%(id)s.%(ext)s "+durl);
@@ -476,7 +477,7 @@ class MusicImplements implements Runnable{
         } catch ( Exception e) {
             e.printStackTrace();
         }
-        Logger.getLogger(MusicImplements.class).info("视频下载---下载完成" );
+        Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...完成..." );
         
 /*    	try {
          	Process pro = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-c","echo '"+name+"--------"+id+"--------"+longth+"' >>"+ p.getProperty("videoNamePath")}) ;
@@ -502,7 +503,7 @@ class MusicImplements implements Runnable{
 		jedis.set("videolist",JSON.toJSONString(vlist));
 		      
 		RedisUtil.returnResource(jedis);
-    	Logger.getLogger(MusicImplements.class).info("视频下载---视频写入文件："+ id+"--"+title+"--"+length); 
+		Logger.getLogger(MusicImplements.class).info("视频下载---视频下载:...已写入redis..." ); 
     	//--get-duration  获取时长
     }  
 } 

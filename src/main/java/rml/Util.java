@@ -89,9 +89,10 @@ public  class Util {
         		vname = map.get(vid).toString();
 	        	for(int i=0;i<vlist.size();i++){
 	        		video = JSON.parseObject(vlist.get(i).toString(),Video.class);
-	        		if(video.getVid().equals(vname)){
+	        		if(video.getVid().equals(vid)){
 	        			break;
 	        		}
+	        		video = null;
 	        	}
 	        	if(video!=null){
 	        		video.setVname(vname);
